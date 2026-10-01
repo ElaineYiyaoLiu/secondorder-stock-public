@@ -1,0 +1,823 @@
+{
+  "model": "path-order-signature-v2",
+  "config": {
+    "priceUnit": 0.01,
+    "signatureWeight": 0.85,
+    "anchorWeight": 0.15,
+    "globalWeight": 0.4,
+    "halvesWeight": 0.35,
+    "quartersWeight": 0.25,
+    "levelWeight": 0.5,
+    "areaWeight": 0.5
+  },
+  "forecast": [
+    {
+      "kind": "null",
+      "seeds": 8,
+      "commonOrigins": 288,
+      "mae": {
+        "legacy": 5.865492234689372,
+        "v2": 5.833912980886417,
+        "global-only": 5.735419380804013,
+        "no-time": 6.0045377457523035
+      },
+      "zeroMAE": 5.3862257650581045,
+      "unconditionalMAE": 5.732440711611806,
+      "meanDelta": -0.0315792538029539,
+      "seedBootstrap95": [
+        -0.32016930850737735,
+        0.2983276976972278
+      ],
+      "pairs": [
+        {
+          "seed": 391001,
+          "n": 36,
+          "mae": {
+            "legacy": 6.463888946978802,
+            "v2": 6.519561789393098,
+            "global-only": 6.131024723565667,
+            "no-time": 6.47416310000715
+          },
+          "zeroMAE": 5.7092361677333265,
+          "unconditionalMAE": 6.280495004653188,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 391998,
+          "n": 36,
+          "mae": {
+            "legacy": 6.542903706235536,
+            "v2": 7.414855382640261,
+            "global-only": 7.309487936559601,
+            "no-time": 7.411926666275702
+          },
+          "zeroMAE": 6.326067304396203,
+          "unconditionalMAE": 6.75688582589996,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 392995,
+          "n": 36,
+          "mae": {
+            "legacy": 5.768793862800759,
+            "v2": 5.9538618951863915,
+            "global-only": 5.545382738471628,
+            "no-time": 6.040447546923166
+          },
+          "zeroMAE": 5.218702223649268,
+          "unconditionalMAE": 6.02109195776577,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 393992,
+          "n": 36,
+          "mae": {
+            "legacy": 6.658303043684068,
+            "v2": 5.917947415029045,
+            "global-only": 6.051054973224335,
+            "no-time": 6.364370549565941
+          },
+          "zeroMAE": 6.0722911527158026,
+          "unconditionalMAE": 5.99445506988185,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 394989,
+          "n": 36,
+          "mae": {
+            "legacy": 4.580556343918648,
+            "v2": 4.536008905649459,
+            "global-only": 4.78809473190012,
+            "no-time": 4.846658200545419
+          },
+          "zeroMAE": 4.302758460463203,
+          "unconditionalMAE": 4.4690321166840885,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 395986,
+          "n": 36,
+          "mae": {
+            "legacy": 5.750732564276114,
+            "v2": 5.503327864888855,
+            "global-only": 5.397004375678997,
+            "no-time": 5.763196307634173
+          },
+          "zeroMAE": 5.298637736832212,
+          "unconditionalMAE": 5.564429297676777,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 396983,
+          "n": 36,
+          "mae": {
+            "legacy": 5.826067999210003,
+            "v2": 5.416660456426821,
+            "global-only": 5.358292370505718,
+            "no-time": 5.422216267236791
+          },
+          "zeroMAE": 4.661873306175701,
+          "unconditionalMAE": 5.002216951496194,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 397980,
+          "n": 36,
+          "mae": {
+            "legacy": 5.332691410411044,
+            "v2": 5.409080137877412,
+            "global-only": 5.303013196526041,
+            "no-time": 5.713323327830081
+          },
+          "zeroMAE": 5.500239768499121,
+          "unconditionalMAE": 5.770919468836625,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "switching",
+      "seeds": 8,
+      "commonOrigins": 288,
+      "mae": {
+        "legacy": 5.985586792874883,
+        "v2": 6.019729744334043,
+        "global-only": 5.9770331110152135,
+        "no-time": 5.931303413310188
+      },
+      "zeroMAE": 5.301116380239122,
+      "unconditionalMAE": 5.623574463694921,
+      "meanDelta": 0.03414295145915969,
+      "seedBootstrap95": [
+        -0.36844954287015397,
+        0.46272575350067713
+      ],
+      "pairs": [
+        {
+          "seed": 391001,
+          "n": 36,
+          "mae": {
+            "legacy": 6.113698410776111,
+            "v2": 6.645894207213444,
+            "global-only": 6.163196556561028,
+            "no-time": 6.128401983073573
+          },
+          "zeroMAE": 5.697327603029529,
+          "unconditionalMAE": 6.278346054097024,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 391998,
+          "n": 36,
+          "mae": {
+            "legacy": 7.388909965102209,
+            "v2": 7.545616641169259,
+            "global-only": 7.656632568304575,
+            "no-time": 7.525514257040497
+          },
+          "zeroMAE": 6.104407135738411,
+          "unconditionalMAE": 6.484198324359127,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 392995,
+          "n": 36,
+          "mae": {
+            "legacy": 4.752844573122744,
+            "v2": 5.861100226104492,
+            "global-only": 5.050470569523846,
+            "no-time": 5.496315634384539
+          },
+          "zeroMAE": 4.698294128767485,
+          "unconditionalMAE": 5.752027804343296,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 393992,
+          "n": 36,
+          "mae": {
+            "legacy": 6.604857749338404,
+            "v2": 5.857489867697733,
+            "global-only": 6.288493937663983,
+            "no-time": 6.274610592471778
+          },
+          "zeroMAE": 6.027077089422991,
+          "unconditionalMAE": 5.988499717198909,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 394989,
+          "n": 36,
+          "mae": {
+            "legacy": 5.250353873658615,
+            "v2": 4.938184540697927,
+            "global-only": 5.177528772364963,
+            "no-time": 4.874995387830416
+          },
+          "zeroMAE": 4.420654117603797,
+          "unconditionalMAE": 4.288985403847354,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 395986,
+          "n": 36,
+          "mae": {
+            "legacy": 6.531698149901491,
+            "v2": 6.551082343299632,
+            "global-only": 6.48510181536106,
+            "no-time": 6.551251333966455
+          },
+          "zeroMAE": 5.364657942750067,
+          "unconditionalMAE": 5.619463139405415,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 396983,
+          "n": 36,
+          "mae": {
+            "legacy": 6.396760798426715,
+            "v2": 5.670639887815941,
+            "global-only": 6.0670299725140655,
+            "no-time": 5.569974828607993
+          },
+          "zeroMAE": 4.982453445368951,
+          "unconditionalMAE": 5.241765370891234,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 397980,
+          "n": 36,
+          "mae": {
+            "legacy": 4.845570822672775,
+            "v2": 5.087830240673913,
+            "global-only": 4.927810695828192,
+            "no-time": 5.029363289106239
+          },
+          "zeroMAE": 5.114059579231739,
+          "unconditionalMAE": 5.335309895417011,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "linked-drift",
+      "seeds": 8,
+      "commonOrigins": 288,
+      "mae": {
+        "legacy": 7.116367541674087,
+        "v2": 7.352917409786621,
+        "global-only": 7.211330207760118,
+        "no-time": 7.347437319153481
+      },
+      "zeroMAE": 6.382908842961906,
+      "unconditionalMAE": 6.821226266050485,
+      "meanDelta": 0.23654986811253464,
+      "seedBootstrap95": [
+        0.06313879248428311,
+        0.43946883756345845
+      ],
+      "pairs": [
+        {
+          "seed": 391001,
+          "n": 36,
+          "mae": {
+            "legacy": 7.328022191589952,
+            "v2": 7.7423616852054415,
+            "global-only": 7.20458372079707,
+            "no-time": 7.585861166442691
+          },
+          "zeroMAE": 6.8949238961344,
+          "unconditionalMAE": 7.039006913016107,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 391998,
+          "n": 36,
+          "mae": {
+            "legacy": 8.791928959363474,
+            "v2": 9.627888396894955,
+            "global-only": 9.336720511444689,
+            "no-time": 9.59752579522552
+          },
+          "zeroMAE": 7.622465274337334,
+          "unconditionalMAE": 8.270806079195907,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 392995,
+          "n": 36,
+          "mae": {
+            "legacy": 7.047008604655805,
+            "v2": 7.120589354410825,
+            "global-only": 7.3393116008582195,
+            "no-time": 7.25022295905361
+          },
+          "zeroMAE": 6.211145481855109,
+          "unconditionalMAE": 6.997424537765772,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 393992,
+          "n": 36,
+          "mae": {
+            "legacy": 6.637131757381663,
+            "v2": 6.857223248114653,
+            "global-only": 6.579428695814623,
+            "no-time": 6.817180485061026
+          },
+          "zeroMAE": 6.285819019084507,
+          "unconditionalMAE": 6.319002217370526,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 394989,
+          "n": 36,
+          "mae": {
+            "legacy": 6.117907968961781,
+            "v2": 6.425049073072009,
+            "global-only": 6.383158148230947,
+            "no-time": 6.427410573027867
+          },
+          "zeroMAE": 5.341349564656298,
+          "unconditionalMAE": 5.507455074850682,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 395986,
+          "n": 36,
+          "mae": {
+            "legacy": 6.657329479172152,
+            "v2": 6.62769381648307,
+            "global-only": 6.66396180488589,
+            "no-time": 7.125127453479411
+          },
+          "zeroMAE": 6.46654762815179,
+          "unconditionalMAE": 6.922404490065411,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 396983,
+          "n": 36,
+          "mae": {
+            "legacy": 7.62861390566528,
+            "v2": 7.521259894475319,
+            "global-only": 7.299846156294986,
+            "no-time": 7.256915283009038
+          },
+          "zeroMAE": 6.094947344209995,
+          "unconditionalMAE": 6.616980543457002,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 397980,
+          "n": 36,
+          "mae": {
+            "legacy": 6.722997466602589,
+            "v2": 6.901273809636701,
+            "global-only": 6.883631023754509,
+            "no-time": 6.719254837928679
+          },
+          "zeroMAE": 6.146072535265806,
+          "unconditionalMAE": 6.896730272682476,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            },
+            "global-only": {
+              "available": 36,
+              "excluded": []
+            },
+            "no-time": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "stress": [
+    {
+      "length": 10,
+      "candidates": 585,
+      "selected": 8,
+      "milliseconds": 32.785948000000644
+    },
+    {
+      "length": 30,
+      "candidates": 577,
+      "selected": 8,
+      "milliseconds": 93.49012799999946
+    },
+    {
+      "length": 120,
+      "candidates": 541,
+      "selected": 8,
+      "milliseconds": 386.82842100000016
+    }
+  ],
+  "limitations": [
+    "Synthetic evaluation only; no real-market prediction evidence.",
+    "Truncated multiscale signatures do not uniquely identify arbitrary paths.",
+    "Fixed transformations, segment weights and anchors are design choices, not fitted optima.",
+    "Calendar gaps and intraday OHLC order are not represented.",
+    "Signed area describes transformed-path order, not causal lead-lag.",
+    "Bootstrap intervals exploratory, seed clustered, not adjusted for multiple comparisons."
+  ]
+}

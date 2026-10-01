@@ -1,0 +1,11 @@
+{
+  "windowStates": 720,
+  "rawPaths": 200,
+  "maxErrors": {
+    "rawLogSignature": 4.263256414560601e-14,
+    "windowBlocks": 1.971756091734278e-13,
+    "vector": 2.979561042337764e-14,
+    "anchors": 1.021405182655144e-14
+  },
+  "oracle": "Full degree-2 tensor signature via Chen product; tensor logarithm, independent NumPy interpolation"
+}

@@ -1,0 +1,2241 @@
+{
+  "model": "price-path-dtw-v2",
+  "config": {
+    "bandFraction": 0.1,
+    "maxRun": 2,
+    "levelWeight": 0.65,
+    "slopeWeight": 0.35,
+    "timePenalty": 0.05,
+    "warpPenalty": 0.05,
+    "alignmentWeight": 0.7,
+    "endpointWeight": 0.15,
+    "regimeWeight": 0.15,
+    "scaleFloor": 0.000001
+  },
+  "protocol": "Fixed design before outcomes; 30-session query, 20-session outcome, stride 20, six spaced neighbours, mature outcomes before query start. Same generators and seeds as candle validation. Held-out seed cohort additionally tests three ablations. 5,000 paired seed-cluster bootstrap resamples per cohort; all origins of a seed remain together. Metrics use the intersection of scored dates across compared methods, with model-specific coverage reported. No outcome-based tuning.",
+  "results": [
+    {
+      "kind": "null",
+      "cohort": "development",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.008343227310061,
+      "v2MAE": 5.920411976306988,
+      "unconditionalMAE": 5.690462883084138,
+      "zeroMAE": 5.452883969013848,
+      "v2Wins": 8,
+      "meanDelta": -0.08793125100307438,
+      "seedBootstrap95": [
+        -0.26716251578384337,
+        0.08596616477242502
+      ],
+      "ablations": {},
+      "pairs": [
+        {
+          "seed": 1000,
+          "n": 46,
+          "legacyMAE": 7.868179384625864,
+          "v2MAE": 7.719944623113508,
+          "unconditionalMAE": 7.5881690254771454,
+          "zeroMAE": 7.229572044098774,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 1997,
+          "n": 46,
+          "legacyMAE": 6.50809171554372,
+          "v2MAE": 6.472828038463774,
+          "unconditionalMAE": 6.660795137048981,
+          "zeroMAE": 5.963083718532267,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 2994,
+          "n": 46,
+          "legacyMAE": 6.016734138325602,
+          "v2MAE": 5.672176027874059,
+          "unconditionalMAE": 4.748357404467943,
+          "zeroMAE": 4.593295174448343,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 3991,
+          "n": 46,
+          "legacyMAE": 5.363934717514374,
+          "v2MAE": 4.88185519482537,
+          "unconditionalMAE": 5.023294776864693,
+          "zeroMAE": 4.738882722977961,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 4988,
+          "n": 46,
+          "legacyMAE": 4.673655549188773,
+          "v2MAE": 4.456799211514657,
+          "unconditionalMAE": 4.9273176215087116,
+          "zeroMAE": 4.858049150008254,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 5985,
+          "n": 46,
+          "legacyMAE": 6.295008539360679,
+          "v2MAE": 5.54362708416475,
+          "unconditionalMAE": 6.354427078868207,
+          "zeroMAE": 5.595032971304963,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 6982,
+          "n": 46,
+          "legacyMAE": 4.884329727688043,
+          "v2MAE": 4.978462412403837,
+          "unconditionalMAE": 4.9568859029660155,
+          "zeroMAE": 4.760173620782475,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 7979,
+          "n": 46,
+          "legacyMAE": 7.47226831355036,
+          "v2MAE": 7.661821731698827,
+          "unconditionalMAE": 6.011705938720948,
+          "zeroMAE": 6.352299092695212,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 8976,
+          "n": 46,
+          "legacyMAE": 5.719513188373129,
+          "v2MAE": 5.704140630801592,
+          "unconditionalMAE": 4.835412528540367,
+          "zeroMAE": 4.843435125122646,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 9973,
+          "n": 46,
+          "legacyMAE": 5.416718853239444,
+          "v2MAE": 5.645175331819782,
+          "unconditionalMAE": 5.506326115953973,
+          "zeroMAE": 5.30925499643813,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 10970,
+          "n": 46,
+          "legacyMAE": 6.931730830697398,
+          "v2MAE": 6.909820011405869,
+          "unconditionalMAE": 6.645315657952403,
+          "zeroMAE": 6.534805713072204,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 11967,
+          "n": 46,
+          "legacyMAE": 4.949953769613357,
+          "v2MAE": 5.3982934175978246,
+          "unconditionalMAE": 5.027547408640278,
+          "zeroMAE": 4.656723298684939,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "null",
+      "cohort": "held-out-seeds",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.123133668808539,
+      "v2MAE": 6.2658954645192635,
+      "unconditionalMAE": 5.857430466261422,
+      "zeroMAE": 5.631938904678262,
+      "v2Wins": 5,
+      "meanDelta": 0.1427617957107231,
+      "seedBootstrap95": [
+        -0.03262036887123313,
+        0.3211128631063788
+      ],
+      "ablations": {
+        "no-warp": 6.24997701034605,
+        "no-slope": 6.325740782846034,
+        "no-regime": 6.275235685240272
+      },
+      "pairs": [
+        {
+          "seed": 9000,
+          "n": 46,
+          "legacyMAE": 5.517622166759375,
+          "v2MAE": 6.061330680818203,
+          "unconditionalMAE": 5.653850359619111,
+          "zeroMAE": 5.812268487661161,
+          "ablations": {
+            "no-warp": 6.018860556785809,
+            "no-slope": 6.119672075183448,
+            "no-regime": 6.291655810451981
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 9997,
+          "n": 46,
+          "legacyMAE": 7.382648376409925,
+          "v2MAE": 7.479500862315344,
+          "unconditionalMAE": 7.715253513323768,
+          "zeroMAE": 7.0066999679788475,
+          "ablations": {
+            "no-warp": 7.603353689621223,
+            "no-slope": 7.646918328223225,
+            "no-regime": 7.528029370999794
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 10994,
+          "n": 46,
+          "legacyMAE": 5.469586238429022,
+          "v2MAE": 5.085172629235015,
+          "unconditionalMAE": 4.36050540796184,
+          "zeroMAE": 4.226609899344467,
+          "ablations": {
+            "no-warp": 5.45491125124767,
+            "no-slope": 5.158353648748316,
+            "no-regime": 5.063422212288492
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 11991,
+          "n": 46,
+          "legacyMAE": 7.047962531102018,
+          "v2MAE": 7.042672240269432,
+          "unconditionalMAE": 5.838804509274095,
+          "zeroMAE": 5.48860405172632,
+          "ablations": {
+            "no-warp": 7.032509350980673,
+            "no-slope": 7.149661143261256,
+            "no-regime": 7.068922777771518
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 12988,
+          "n": 46,
+          "legacyMAE": 5.386058243360839,
+          "v2MAE": 5.626186564486345,
+          "unconditionalMAE": 6.0276544151544815,
+          "zeroMAE": 6.3004090607639345,
+          "ablations": {
+            "no-warp": 5.594977032881098,
+            "no-slope": 5.779034754125701,
+            "no-regime": 5.610435487130997
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 13985,
+          "n": 46,
+          "legacyMAE": 7.1756131514762655,
+          "v2MAE": 6.923869055215736,
+          "unconditionalMAE": 5.86405180457182,
+          "zeroMAE": 5.692587163418267,
+          "ablations": {
+            "no-warp": 6.594375270750093,
+            "no-slope": 6.72532603240363,
+            "no-regime": 6.812121487389712
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 14982,
+          "n": 46,
+          "legacyMAE": 5.718215803336682,
+          "v2MAE": 6.050718751063724,
+          "unconditionalMAE": 5.046673293134221,
+          "zeroMAE": 4.720270532344469,
+          "ablations": {
+            "no-warp": 5.9870274473407985,
+            "no-slope": 6.038260144272527,
+            "no-regime": 6.096769275374881
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 15979,
+          "n": 46,
+          "legacyMAE": 6.166417773345367,
+          "v2MAE": 6.598601939911064,
+          "unconditionalMAE": 6.251424016598325,
+          "zeroMAE": 5.78383509448452,
+          "ablations": {
+            "no-warp": 6.16709621700704,
+            "no-slope": 6.811642331345103,
+            "no-regime": 6.618707656194165
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 16976,
+          "n": 46,
+          "legacyMAE": 5.4457054195116354,
+          "v2MAE": 5.415545454466564,
+          "unconditionalMAE": 5.7109562632692565,
+          "zeroMAE": 5.664209773830227,
+          "ablations": {
+            "no-warp": 5.491000111586501,
+            "no-slope": 5.499048908033493,
+            "no-regime": 5.452637898036839
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 17973,
+          "n": 46,
+          "legacyMAE": 6.312693622621374,
+          "v2MAE": 6.2862270503097575,
+          "unconditionalMAE": 5.896992598482819,
+          "zeroMAE": 5.583664680236746,
+          "ablations": {
+            "no-warp": 6.515607072510273,
+            "no-slope": 6.384164868326281,
+            "no-regime": 6.298837293823296
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 18970,
+          "n": 46,
+          "legacyMAE": 6.346565626411846,
+          "v2MAE": 6.349967838015532,
+          "unconditionalMAE": 6.4091996620103,
+          "zeroMAE": 5.887485319003049,
+          "ablations": {
+            "no-warp": 6.339709490805588,
+            "no-slope": 6.4009311471000485,
+            "no-regime": 6.249173188014297
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 19967,
+          "n": 46,
+          "legacyMAE": 5.508515072938127,
+          "v2MAE": 6.270952508124437,
+          "unconditionalMAE": 5.51379975173703,
+          "zeroMAE": 5.4166228253471305,
+          "ablations": {
+            "no-warp": 6.200296632635827,
+            "no-slope": 6.195876013129375,
+            "no-regime": 6.212115765407276
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "switching",
+      "cohort": "development",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 8.767824472406643,
+      "v2MAE": 8.79309675979959,
+      "unconditionalMAE": 8.086896242711637,
+      "zeroMAE": 7.43755948566589,
+      "v2Wins": 6,
+      "meanDelta": 0.025272287392947995,
+      "seedBootstrap95": [
+        -0.19638481148875797,
+        0.252365541450355
+      ],
+      "ablations": {},
+      "pairs": [
+        {
+          "seed": 1000,
+          "n": 46,
+          "legacyMAE": 9.935423619770699,
+          "v2MAE": 9.888890707297177,
+          "unconditionalMAE": 8.888712150890965,
+          "zeroMAE": 8.560811112896717,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 1997,
+          "n": 46,
+          "legacyMAE": 9.531660440868507,
+          "v2MAE": 9.920911043278796,
+          "unconditionalMAE": 10.18706561460027,
+          "zeroMAE": 7.976147121580441,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 2994,
+          "n": 46,
+          "legacyMAE": 8.176552601650565,
+          "v2MAE": 7.735408874762941,
+          "unconditionalMAE": 6.602536704343034,
+          "zeroMAE": 6.493133560699548,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 3991,
+          "n": 46,
+          "legacyMAE": 8.527999034375062,
+          "v2MAE": 7.9391783325868515,
+          "unconditionalMAE": 8.035397690757149,
+          "zeroMAE": 7.580933960790577,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 4988,
+          "n": 46,
+          "legacyMAE": 6.893408001701795,
+          "v2MAE": 7.509896360382288,
+          "unconditionalMAE": 8.841824401432671,
+          "zeroMAE": 6.816963584941471,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 5985,
+          "n": 46,
+          "legacyMAE": 7.8176447806778215,
+          "v2MAE": 7.514447363108895,
+          "unconditionalMAE": 6.728532571260413,
+          "zeroMAE": 6.627311379014574,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 6982,
+          "n": 46,
+          "legacyMAE": 7.575013552814669,
+          "v2MAE": 7.66296929772258,
+          "unconditionalMAE": 7.439321782045239,
+          "zeroMAE": 7.171620950603347,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 7979,
+          "n": 46,
+          "legacyMAE": 12.273257009706475,
+          "v2MAE": 12.095231711184352,
+          "unconditionalMAE": 10.18700124854735,
+          "zeroMAE": 9.595478273527291,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 8976,
+          "n": 46,
+          "legacyMAE": 9.5180701634047,
+          "v2MAE": 9.114479405643417,
+          "unconditionalMAE": 7.93418699844712,
+          "zeroMAE": 7.504350982970164,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 9973,
+          "n": 46,
+          "legacyMAE": 7.588658337455817,
+          "v2MAE": 7.933988694514011,
+          "unconditionalMAE": 7.118965359795315,
+          "zeroMAE": 7.038915483729182,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 10970,
+          "n": 46,
+          "legacyMAE": 9.646633903543869,
+          "v2MAE": 10.17599555981944,
+          "unconditionalMAE": 7.939686381825054,
+          "zeroMAE": 7.489069190958219,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 11967,
+          "n": 46,
+          "legacyMAE": 7.729572222909735,
+          "v2MAE": 8.025763767294341,
+          "unconditionalMAE": 7.139524008595069,
+          "zeroMAE": 6.39597822627915,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "switching",
+      "cohort": "held-out-seeds",
+      "seeds": 12,
+      "origins": 551,
+      "legacyMAE": 9.487737009016618,
+      "v2MAE": 9.569208199369827,
+      "unconditionalMAE": 8.27143788960971,
+      "zeroMAE": 7.606269517347131,
+      "v2Wins": 5,
+      "meanDelta": 0.08147119035321015,
+      "seedBootstrap95": [
+        -0.33400823807521013,
+        0.5060730780911084
+      ],
+      "ablations": {
+        "no-warp": 9.563890225275701,
+        "no-slope": 9.53417136107964,
+        "no-regime": 9.575785832706204
+      },
+      "pairs": [
+        {
+          "seed": 9000,
+          "n": 46,
+          "legacyMAE": 9.086544827549028,
+          "v2MAE": 9.972100379422777,
+          "unconditionalMAE": 7.223739789045896,
+          "zeroMAE": 6.840722057295203,
+          "ablations": {
+            "no-warp": 9.598803518001109,
+            "no-slope": 9.591115217528019,
+            "no-regime": 9.6164205437294
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 9997,
+          "n": 46,
+          "legacyMAE": 12.563472457754616,
+          "v2MAE": 12.49954569003016,
+          "unconditionalMAE": 11.454468963977549,
+          "zeroMAE": 9.971886523741286,
+          "ablations": {
+            "no-warp": 13.059691593657897,
+            "no-slope": 12.535485308043734,
+            "no-regime": 13.201201482015605
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 10994,
+          "n": 46,
+          "legacyMAE": 8.091788007680817,
+          "v2MAE": 7.643639896980684,
+          "unconditionalMAE": 6.696677227708708,
+          "zeroMAE": 6.0861725537104885,
+          "ablations": {
+            "no-warp": 7.49068675493092,
+            "no-slope": 7.589236282127278,
+            "no-regime": 7.675809951063598
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 11991,
+          "n": 45,
+          "legacyMAE": 8.325122645858642,
+          "v2MAE": 9.441380725453632,
+          "unconditionalMAE": 8.09382518189057,
+          "zeroMAE": 7.315712675435386,
+          "ablations": {
+            "no-warp": 8.957222965230253,
+            "no-slope": 9.24270021245887,
+            "no-regime": 9.302078433267589
+          },
+          "coverage": {
+            "legacy": {
+              "available": 45,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": [
+                "2010-09-18"
+              ]
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": [
+                "2010-09-18"
+              ]
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": [
+                "2010-09-18"
+              ]
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": [
+                "2010-09-18"
+              ]
+            }
+          }
+        },
+        {
+          "seed": 12988,
+          "n": 46,
+          "legacyMAE": 8.919771223427478,
+          "v2MAE": 9.11503685000837,
+          "unconditionalMAE": 7.985363135850813,
+          "zeroMAE": 8.150188936496823,
+          "ablations": {
+            "no-warp": 8.760307583786869,
+            "no-slope": 9.250954315618927,
+            "no-regime": 8.963020988741272
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 13985,
+          "n": 46,
+          "legacyMAE": 10.135420020498803,
+          "v2MAE": 10.312841929493613,
+          "unconditionalMAE": 8.058795945068894,
+          "zeroMAE": 7.846624933778682,
+          "ablations": {
+            "no-warp": 10.151373935963184,
+            "no-slope": 10.190259833187461,
+            "no-regime": 10.056959363476237
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 14982,
+          "n": 46,
+          "legacyMAE": 8.470087291563809,
+          "v2MAE": 9.825751290808808,
+          "unconditionalMAE": 8.050004494041405,
+          "zeroMAE": 6.778962978466192,
+          "ablations": {
+            "no-warp": 9.945882940205786,
+            "no-slope": 9.354209375199789,
+            "no-regime": 9.929014929908735
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 15979,
+          "n": 46,
+          "legacyMAE": 9.723704493777925,
+          "v2MAE": 8.336726123976627,
+          "unconditionalMAE": 7.465407521449747,
+          "zeroMAE": 7.20824313650379,
+          "ablations": {
+            "no-warp": 8.625908242274374,
+            "no-slope": 8.658269254707406,
+            "no-regime": 8.865098740616897
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 16976,
+          "n": 46,
+          "legacyMAE": 8.51017953814229,
+          "v2MAE": 8.32602144246829,
+          "unconditionalMAE": 8.19414808362256,
+          "zeroMAE": 7.314945256385829,
+          "ablations": {
+            "no-warp": 8.192903345249247,
+            "no-slope": 8.725295611821023,
+            "no-regime": 8.161166787082422
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 17973,
+          "n": 46,
+          "legacyMAE": 10.644344323777455,
+          "v2MAE": 10.688870144753873,
+          "unconditionalMAE": 7.723528007398863,
+          "zeroMAE": 7.382686883316183,
+          "ablations": {
+            "no-warp": 9.839136528390556,
+            "no-slope": 10.69684582743645,
+            "no-regime": 9.533697050084042
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 18970,
+          "n": 46,
+          "legacyMAE": 9.272909853130539,
+          "v2MAE": 9.37040919754909,
+          "unconditionalMAE": 10.123941854994783,
+          "zeroMAE": 8.11672368034229,
+          "ablations": {
+            "no-warp": 9.68392544182399,
+            "no-slope": 9.529415522763385,
+            "no-regime": 9.722791188613426
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 19967,
+          "n": 46,
+          "legacyMAE": 10.109499425037981,
+          "v2MAE": 9.29817472149198,
+          "unconditionalMAE": 8.187354470266708,
+          "zeroMAE": 8.26236459269341,
+          "ablations": {
+            "no-warp": 10.460839853794223,
+            "no-slope": 9.046269572063334,
+            "no-regime": 9.88217053387521
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "repeated",
+      "cohort": "development",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.308530480910339,
+      "v2MAE": 6.531401059459868,
+      "unconditionalMAE": 6.178548008015237,
+      "zeroMAE": 5.841683682018181,
+      "v2Wins": 2,
+      "meanDelta": 0.22287057854952996,
+      "seedBootstrap95": [
+        0.026395225795810686,
+        0.41140278341356634
+      ],
+      "ablations": {},
+      "pairs": [
+        {
+          "seed": 1000,
+          "n": 46,
+          "legacyMAE": 7.869965435762712,
+          "v2MAE": 7.370928984451164,
+          "unconditionalMAE": 7.996692879202124,
+          "zeroMAE": 7.643411894016401,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 1997,
+          "n": 46,
+          "legacyMAE": 7.6862158494468416,
+          "v2MAE": 7.742236327819818,
+          "unconditionalMAE": 7.92802101937093,
+          "zeroMAE": 6.483817925135888,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 2994,
+          "n": 46,
+          "legacyMAE": 5.807648260518186,
+          "v2MAE": 5.849590116750723,
+          "unconditionalMAE": 5.203507073244815,
+          "zeroMAE": 5.2203473611874704,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 3991,
+          "n": 46,
+          "legacyMAE": 5.354953182373825,
+          "v2MAE": 5.727363802278195,
+          "unconditionalMAE": 5.545441978782025,
+          "zeroMAE": 5.529571164623151,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 4988,
+          "n": 46,
+          "legacyMAE": 5.191578591002298,
+          "v2MAE": 5.914717113135009,
+          "unconditionalMAE": 5.617458467996943,
+          "zeroMAE": 5.42254790991539,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 5985,
+          "n": 46,
+          "legacyMAE": 5.684795131820032,
+          "v2MAE": 5.771033597866728,
+          "unconditionalMAE": 6.254809457528138,
+          "zeroMAE": 5.201603889702571,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 6982,
+          "n": 46,
+          "legacyMAE": 5.798943670841525,
+          "v2MAE": 6.570855190707444,
+          "unconditionalMAE": 5.872212443745583,
+          "zeroMAE": 5.582138359816093,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 7979,
+          "n": 46,
+          "legacyMAE": 7.834356425602748,
+          "v2MAE": 8.190013735438963,
+          "unconditionalMAE": 6.213736079661272,
+          "zeroMAE": 6.684715233284557,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 8976,
+          "n": 46,
+          "legacyMAE": 5.640806634926551,
+          "v2MAE": 6.012714455793677,
+          "unconditionalMAE": 5.318518817447177,
+          "zeroMAE": 4.998739987309499,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 9973,
+          "n": 46,
+          "legacyMAE": 6.925042891569259,
+          "v2MAE": 6.732427564944129,
+          "unconditionalMAE": 6.497306461981327,
+          "zeroMAE": 6.230424226469744,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 10970,
+          "n": 46,
+          "legacyMAE": 7.221064379881865,
+          "v2MAE": 7.441795445028978,
+          "unconditionalMAE": 6.814997848434385,
+          "zeroMAE": 6.6237821375624995,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 11967,
+          "n": 46,
+          "legacyMAE": 4.68699531717823,
+          "v2MAE": 5.0531363793036,
+          "unconditionalMAE": 4.87987356878813,
+          "zeroMAE": 4.479104095194918,
+          "ablations": {},
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "repeated",
+      "cohort": "held-out-seeds",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.877577383976302,
+      "v2MAE": 6.968046100971368,
+      "unconditionalMAE": 6.43322331043106,
+      "zeroMAE": 6.207090393091845,
+      "v2Wins": 6,
+      "meanDelta": 0.09046871699506775,
+      "seedBootstrap95": [
+        -0.11104989821709434,
+        0.31138629362201375
+      ],
+      "ablations": {
+        "no-warp": 6.902033482756294,
+        "no-slope": 6.974248910529468,
+        "no-regime": 6.9978055637232615
+      },
+      "pairs": [
+        {
+          "seed": 9000,
+          "n": 46,
+          "legacyMAE": 6.997892119473511,
+          "v2MAE": 7.428552283006161,
+          "unconditionalMAE": 6.499496964489327,
+          "zeroMAE": 6.4493196288722965,
+          "ablations": {
+            "no-warp": 7.081584139008204,
+            "no-slope": 7.596922972095866,
+            "no-regime": 7.371616147456533
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 9997,
+          "n": 46,
+          "legacyMAE": 9.021440895689036,
+          "v2MAE": 9.018657024638467,
+          "unconditionalMAE": 8.382005510782609,
+          "zeroMAE": 7.715588113141132,
+          "ablations": {
+            "no-warp": 9.00368829067205,
+            "no-slope": 8.83139338692939,
+            "no-regime": 9.233477932951953
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 10994,
+          "n": 46,
+          "legacyMAE": 5.448527771024044,
+          "v2MAE": 6.393984316031028,
+          "unconditionalMAE": 5.307981709185226,
+          "zeroMAE": 5.1206610322487265,
+          "ablations": {
+            "no-warp": 6.514779505490594,
+            "no-slope": 6.633771356947418,
+            "no-regime": 6.40469700339861
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 11991,
+          "n": 46,
+          "legacyMAE": 7.647611198919168,
+          "v2MAE": 7.54358381021978,
+          "unconditionalMAE": 6.95738082233588,
+          "zeroMAE": 6.527752121462956,
+          "ablations": {
+            "no-warp": 7.658005262330881,
+            "no-slope": 7.632146235449676,
+            "no-regime": 7.635975932325828
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 12988,
+          "n": 46,
+          "legacyMAE": 6.512133716337288,
+          "v2MAE": 6.264897684346182,
+          "unconditionalMAE": 6.320242344458791,
+          "zeroMAE": 6.309387299673179,
+          "ablations": {
+            "no-warp": 5.91746367118168,
+            "no-slope": 6.286604609256641,
+            "no-regime": 6.407679711678186
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 13985,
+          "n": 46,
+          "legacyMAE": 7.720068888960292,
+          "v2MAE": 7.383288134861194,
+          "unconditionalMAE": 7.052181678454219,
+          "zeroMAE": 6.872425711546311,
+          "ablations": {
+            "no-warp": 7.190853326589231,
+            "no-slope": 7.395391769753094,
+            "no-regime": 7.559180154269804
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 14982,
+          "n": 46,
+          "legacyMAE": 5.584815198833562,
+          "v2MAE": 5.968555543931599,
+          "unconditionalMAE": 5.42845656462281,
+          "zeroMAE": 5.155127614947746,
+          "ablations": {
+            "no-warp": 6.181441614832595,
+            "no-slope": 6.347132212217158,
+            "no-regime": 5.8868167429966425
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 15979,
+          "n": 46,
+          "legacyMAE": 6.821391544920722,
+          "v2MAE": 7.054668857471533,
+          "unconditionalMAE": 6.904400827416543,
+          "zeroMAE": 6.3677769663656125,
+          "ablations": {
+            "no-warp": 6.9043433584574245,
+            "no-slope": 6.9825970422785355,
+            "no-regime": 7.008541705226286
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 16976,
+          "n": 46,
+          "legacyMAE": 6.220102938924795,
+          "v2MAE": 6.513203018046156,
+          "unconditionalMAE": 5.56476182488793,
+          "zeroMAE": 5.540790844127564,
+          "ablations": {
+            "no-warp": 6.313845118655198,
+            "no-slope": 6.429524063541723,
+            "no-regime": 6.339209415910818
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 17973,
+          "n": 46,
+          "legacyMAE": 7.220341667495022,
+          "v2MAE": 7.145278385628478,
+          "unconditionalMAE": 6.698800847159549,
+          "zeroMAE": 6.293923317520858,
+          "ablations": {
+            "no-warp": 6.808492385368355,
+            "no-slope": 7.264957057470844,
+            "no-regime": 7.141504195343809
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 18970,
+          "n": 46,
+          "legacyMAE": 7.054427597553611,
+          "v2MAE": 7.102965322810519,
+          "unconditionalMAE": 6.631658435323935,
+          "zeroMAE": 6.519764744570046,
+          "ablations": {
+            "no-warp": 7.124217910374408,
+            "no-slope": 6.739764564529562,
+            "no-regime": 6.968403868065782
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 19967,
+          "n": 46,
+          "legacyMAE": 6.282175069584569,
+          "v2MAE": 5.798918830665336,
+          "unconditionalMAE": 5.451312196055913,
+          "zeroMAE": 5.612567322625723,
+          "ablations": {
+            "no-warp": 6.125687210114903,
+            "no-slope": 5.550781655883707,
+            "no-regime": 6.0165639550548855
+          },
+          "coverage": {
+            "legacy": {
+              "available": 46,
+              "excluded": []
+            },
+            "v2": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-warp": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-slope": {
+              "available": 46,
+              "excluded": []
+            },
+            "no-regime": {
+              "available": 46,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "demo": [
+    {
+      "symbol": "NVDA",
+      "n": 11,
+      "legacyMAE": 4.273427784089744,
+      "v2MAE": 4.93895643756045,
+      "unconditionalMAE": 4.5378671605534,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "AAPL",
+      "n": 11,
+      "legacyMAE": 4.734553730251496,
+      "v2MAE": 4.525373198502175,
+      "unconditionalMAE": 4.868197391415378,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "n": 11,
+      "legacyMAE": 3.5345085645920333,
+      "v2MAE": 3.4226264523878274,
+      "unconditionalMAE": 3.250510829448933,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "AMZN",
+      "n": 11,
+      "legacyMAE": 3.5462197123591963,
+      "v2MAE": 3.323441905674781,
+      "unconditionalMAE": 3.6913360376009994,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "META",
+      "n": 11,
+      "legacyMAE": 5.280823148792001,
+      "v2MAE": 5.194336174367124,
+      "unconditionalMAE": 6.13304666893523,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "SPY",
+      "n": 11,
+      "legacyMAE": 3.5279651960169915,
+      "v2MAE": 3.5077729743971786,
+      "unconditionalMAE": 3.227466924537627,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "QQQ",
+      "n": 11,
+      "legacyMAE": 4.257483734074597,
+      "v2MAE": 4.285071723631239,
+      "unconditionalMAE": 3.2446482194269306,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    },
+    {
+      "symbol": "TSLA",
+      "n": 11,
+      "legacyMAE": 3.9413776429545937,
+      "v2MAE": 4.0928880537820325,
+      "unconditionalMAE": 2.580857434455562,
+      "coverage": {
+        "legacy": {
+          "available": 11,
+          "excluded": []
+        },
+        "v2": {
+          "available": 11,
+          "excluded": []
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic processes only, no real-market data or alpha evidence.",
+    "Seeds were used previously in candle validation; they are separate from path development checks, not a never-seen dataset.",
+    "Seed cohorts share generators, so they do not represent held-out market regimes.",
+    "Bootstrap intervals are exploratory with 12 independent seeds per group; no multiple-comparison adjustment.",
+    "Fixed constants are modeling assumptions; results must not be used to tune against this evaluation set."
+  ]
+}

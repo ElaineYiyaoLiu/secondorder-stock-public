@@ -1,0 +1,8 @@
+{
+  "windows": 240,
+  "pairs": 1000,
+  "prefixMismatches": 0,
+  "maxFeatureError": 3.574918139293004e-14,
+  "distanceOracle": "intersection of ancestor-node sets",
+  "implementation": "Python NumPy independent embedding"
+}

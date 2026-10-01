@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "n": 10,
+      "candidates": 585,
+      "analogues": 8,
+      "milliseconds": 48.41806799999999
+    },
+    {
+      "n": 30,
+      "candidates": 577,
+      "analogues": 8,
+      "milliseconds": 105.89608399999997
+    },
+    {
+      "n": 120,
+      "candidates": 541,
+      "analogues": 8,
+      "milliseconds": 655.6208929999999
+    }
+  ],
+  "unchangedSevenRankings": true,
+  "notes": "Node runtime on this workspace; duplicated fixture for computational stress only, not market evaluation."
+}

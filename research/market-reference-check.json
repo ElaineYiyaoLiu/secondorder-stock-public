@@ -1,0 +1,8 @@
+{
+  "covarianceMaxAbsoluteError": 2.0111950299606107e-17,
+  "shrinkageMaxError": 8.104628079763643e-15,
+  "distanceMaxError": 7.105427357601002e-13,
+  "decompositionMaxError": 2.0827783941967937e-13,
+  "covarianceCases": 9,
+  "matrixCases": 100
+}

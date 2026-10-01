@@ -1,0 +1,588 @@
+{
+  "model": "hierarchical-state-v2",
+  "config": {
+    "refinementBits": 6,
+    "depth": 28,
+    "decay": 0.25,
+    "returnFloor": 0.001,
+    "winsorMAD": 3,
+    "trendNeutral": 0.5,
+    "balanceNeutral": 0.1,
+    "volumeNeutral": 0.1823215567939546
+  },
+  "forecast": [
+    {
+      "kind": "null",
+      "seeds": 8,
+      "commonOrigins": 288,
+      "mae": {
+        "legacy": 5.706061483110258,
+        "v2": 5.803604588660024
+      },
+      "zeroMAE": 5.3862257650581045,
+      "unconditionalMAE": 5.732440711611806,
+      "meanDelta": 0.09754310554976542,
+      "seedBootstrap95": [
+        -0.08251581470873387,
+        0.26623976500499336
+      ],
+      "pairs": [
+        {
+          "seed": 391001,
+          "n": 36,
+          "mae": {
+            "legacy": 6.39487209270726,
+            "v2": 6.257928757339751
+          },
+          "zeroMAE": 5.7092361677333265,
+          "unconditionalMAE": 6.280495004653188,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 391998,
+          "n": 36,
+          "mae": {
+            "legacy": 6.918764027168574,
+            "v2": 7.165910726720963
+          },
+          "zeroMAE": 6.326067304396203,
+          "unconditionalMAE": 6.75688582589996,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 392995,
+          "n": 36,
+          "mae": {
+            "legacy": 5.596969010833073,
+            "v2": 5.313107278955068
+          },
+          "zeroMAE": 5.218702223649268,
+          "unconditionalMAE": 6.02109195776577,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 393992,
+          "n": 36,
+          "mae": {
+            "legacy": 6.049531549864072,
+            "v2": 6.406290738097286
+          },
+          "zeroMAE": 6.0722911527158026,
+          "unconditionalMAE": 5.99445506988185,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 394989,
+          "n": 36,
+          "mae": {
+            "legacy": 4.210775062727943,
+            "v2": 4.579798544700697
+          },
+          "zeroMAE": 4.302758460463203,
+          "unconditionalMAE": 4.4690321166840885,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 395986,
+          "n": 36,
+          "mae": {
+            "legacy": 5.601118934732997,
+            "v2": 5.825179744591637
+          },
+          "zeroMAE": 5.298637736832212,
+          "unconditionalMAE": 5.564429297676777,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 396983,
+          "n": 36,
+          "mae": {
+            "legacy": 5.22109931481753,
+            "v2": 5.462921706343635
+          },
+          "zeroMAE": 4.661873306175701,
+          "unconditionalMAE": 5.002216951496194,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 397980,
+          "n": 36,
+          "mae": {
+            "legacy": 5.655361872030613,
+            "v2": 5.417699212531149
+          },
+          "zeroMAE": 5.500239768499121,
+          "unconditionalMAE": 5.770919468836625,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "switching",
+      "seeds": 8,
+      "commonOrigins": 288,
+      "mae": {
+        "legacy": 5.733263376960863,
+        "v2": 5.851283318941738
+      },
+      "zeroMAE": 5.301116380239122,
+      "unconditionalMAE": 5.623574463694921,
+      "meanDelta": 0.11801994198087506,
+      "seedBootstrap95": [
+        -0.10499436967878484,
+        0.33013658522408595
+      ],
+      "pairs": [
+        {
+          "seed": 391001,
+          "n": 36,
+          "mae": {
+            "legacy": 6.756292574259995,
+            "v2": 6.293842276587045
+          },
+          "zeroMAE": 5.697327603029529,
+          "unconditionalMAE": 6.278346054097024,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 391998,
+          "n": 36,
+          "mae": {
+            "legacy": 6.39116736443307,
+            "v2": 6.991392284397805
+          },
+          "zeroMAE": 6.104407135738411,
+          "unconditionalMAE": 6.484198324359127,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 392995,
+          "n": 36,
+          "mae": {
+            "legacy": 5.202411677415736,
+            "v2": 5.414674645438312
+          },
+          "zeroMAE": 4.698294128767485,
+          "unconditionalMAE": 5.752027804343296,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 393992,
+          "n": 36,
+          "mae": {
+            "legacy": 6.076562338257904,
+            "v2": 6.216625164327785
+          },
+          "zeroMAE": 6.027077089422991,
+          "unconditionalMAE": 5.988499717198909,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 394989,
+          "n": 36,
+          "mae": {
+            "legacy": 4.542288196559937,
+            "v2": 4.4692520165635665
+          },
+          "zeroMAE": 4.420654117603797,
+          "unconditionalMAE": 4.288985403847354,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 395986,
+          "n": 36,
+          "mae": {
+            "legacy": 6.506830865805707,
+            "v2": 6.467975927078418
+          },
+          "zeroMAE": 5.364657942750067,
+          "unconditionalMAE": 5.619463139405415,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 396983,
+          "n": 36,
+          "mae": {
+            "legacy": 5.6677357359325935,
+            "v2": 5.764200643272958
+          },
+          "zeroMAE": 4.982453445368951,
+          "unconditionalMAE": 5.241765370891234,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 397980,
+          "n": 36,
+          "mae": {
+            "legacy": 4.722818263021966,
+            "v2": 5.1923035938680195
+          },
+          "zeroMAE": 5.114059579231739,
+          "unconditionalMAE": 5.335309895417011,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "linked-drift",
+      "seeds": 8,
+      "commonOrigins": 288,
+      "mae": {
+        "legacy": 6.824226962725628,
+        "v2": 6.795725426454386
+      },
+      "zeroMAE": 6.382908842961906,
+      "unconditionalMAE": 6.821226266050485,
+      "meanDelta": -0.028501536271241523,
+      "seedBootstrap95": [
+        -0.27750103085800426,
+        0.22892864207951427
+      ],
+      "pairs": [
+        {
+          "seed": 391001,
+          "n": 36,
+          "mae": {
+            "legacy": 7.307685410931888,
+            "v2": 7.145652619448534
+          },
+          "zeroMAE": 6.8949238961344,
+          "unconditionalMAE": 7.039006913016107,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 391998,
+          "n": 36,
+          "mae": {
+            "legacy": 8.761674778290335,
+            "v2": 8.807527874123972
+          },
+          "zeroMAE": 7.622465274337334,
+          "unconditionalMAE": 8.270806079195907,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 392995,
+          "n": 36,
+          "mae": {
+            "legacy": 6.771375531983245,
+            "v2": 6.179282356696417
+          },
+          "zeroMAE": 6.211145481855109,
+          "unconditionalMAE": 6.997424537765772,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 393992,
+          "n": 36,
+          "mae": {
+            "legacy": 6.77035678995322,
+            "v2": 6.49589049685542
+          },
+          "zeroMAE": 6.285819019084507,
+          "unconditionalMAE": 6.319002217370526,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 394989,
+          "n": 36,
+          "mae": {
+            "legacy": 5.191995188473278,
+            "v2": 5.841488781998076
+          },
+          "zeroMAE": 5.341349564656298,
+          "unconditionalMAE": 5.507455074850682,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 395986,
+          "n": 36,
+          "mae": {
+            "legacy": 7.022364119415945,
+            "v2": 7.28441046438753
+          },
+          "zeroMAE": 6.46654762815179,
+          "unconditionalMAE": 6.922404490065411,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 396983,
+          "n": 36,
+          "mae": {
+            "legacy": 6.93686566901767,
+            "v2": 6.553461541413238
+          },
+          "zeroMAE": 6.094947344209995,
+          "unconditionalMAE": 6.616980543457002,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        },
+        {
+          "seed": 397980,
+          "n": 36,
+          "mae": {
+            "legacy": 5.831498213739439,
+            "v2": 6.0580892767119
+          },
+          "zeroMAE": 6.146072535265806,
+          "unconditionalMAE": 6.896730272682476,
+          "coverage": {
+            "legacy": {
+              "available": 36,
+              "excluded": []
+            },
+            "v2": {
+              "available": 36,
+              "excluded": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "stress": [
+    {
+      "length": 10,
+      "candidates": 585,
+      "selected": 8,
+      "milliseconds": 22.172373999999763
+    },
+    {
+      "length": 30,
+      "candidates": 577,
+      "selected": 8,
+      "milliseconds": 54.771212000000105
+    },
+    {
+      "length": 120,
+      "candidates": 541,
+      "selected": 8,
+      "milliseconds": 308.030346
+    }
+  ],
+  "collision": {
+    "legacy": {
+      "windows": 195,
+      "distinctLeaves": 8,
+      "tiedPairFraction": 0.18186624372191382
+    },
+    "v2": {
+      "windows": 195,
+      "distinctLeaves": 194,
+      "tiedPairFraction": 0.00005286809410520751
+    }
+  },
+  "limitations": [
+    "Synthetic evaluation only; not real-market alpha evidence.",
+    "Fixed hierarchy order and thresholds can create boundary jumps and early risk dominance.",
+    "Clipping suppresses isolated shocks, so raw tail risk needs the separate distribution model.",
+    "A finite quantized leaf is an equivalence class: zero distance does not imply identical OHLCV.",
+    "Bootstrap intervals exploratory, seed clustered, not multiple-comparison adjusted."
+  ]
+}

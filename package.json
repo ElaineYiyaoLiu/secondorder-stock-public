@@ -1,0 +1,22 @@
+{
+  "name": "secondorder-stock",
+  "version": "0.10.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "validate:relations": "node scripts/validate-relations.mjs",
+    "validate:path": "node scripts/validate-path.mjs",
+    "validate:candle": "node scripts/validate-candle.mjs",
+    "validate:market": "node scripts/validate-market.mjs",
+    "validate:distribution": "node scripts/validate-distribution.mjs",
+    "validate:signature": "node scripts/validate-signature.mjs",
+    "validate:hierarchy": "node scripts/validate-hierarchy.mjs",
+    "validate:topology": "node scripts/validate-topology.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,25 @@
+import {demoCandles,stocks} from './market.js';
+export const BASKET=['NVDA','AAPL','MSFT','AMZN','META','SPY','QQQ','TSLA'];
+export function sampleDataset(symbol='NVDA'){return Object.fromEntries([...new Set([...BASKET,symbol])].map(s=>[s,demoCandles(s)]));}
+export function validCandle(r){return /^\d{4}-\d{2}-\d{2}$/.test(r.date)&&new Date(r.date+'T12:00:00Z').toISOString().slice(0,10)===r.date&&[r.open,r.high,r.low,r.close,r.volume].every(Number.isFinite)&&r.low>0&&r.volume>=0&&r.low<=Math.min(r.open,r.close)&&r.high>=Math.max(r.open,r.close);}
+export function validateDataset(dataset){
+ const symbols=Object.keys(dataset);if(!symbols.length||symbols.length>12)throw Error('Provide 1–12 symbols.');
+ const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ for(const symbol of symbols){
+  if(!/^[A-Z0-9.^-]{1,16}$/.test(symbol))throw Error('Invalid ticker.');
+  const rows=dataset[symbol];if(!Array.isArray(rows)||rows.length<180||rows.length>3000)throw Error('Provide 180–3000 completed daily bars per symbol.');
+  rows.forEach((r,i)=>{if(!validCandle(r)||r.date>=today||(i&&r.date<=rows[i-1].date))throw Error('Check dates, OHLC, volume, duplicate rows, and sorting.');});
+ }
+ return dataset;
+}
+export function parseCSV(text){
+ if(text.length>6000000)throw Error('CSV exceeds 6 MB.');
+ const lines=text.replace(/^\uFEFF/,'').trim().split(/\r?\n/),header=lines.shift().toLowerCase().split(',').map(s=>s.trim()),fields=['symbol','date','open','high','low','close','volume'];
+ if(fields.some(f=>!header.includes(f)))throw Error('Use columns: symbol,date,open,high,low,close,volume.');
+ if(new Set(header).size!==header.length)throw Error('Duplicate CSV headers.');
+ const dataset=Object.create(null);
+ for(const line of lines){if(!line.trim())continue;const cells=line.split(',').map(s=>s.trim());if(cells.length!==header.length)throw Error('Each row must match the header; quoted fields are not supported.');const values=Object.fromEntries(header.map((h,i)=>[h,cells[i]])),symbol=values.symbol.toUpperCase();if(!/^[A-Z0-9.^-]{1,16}$/.test(symbol))throw Error('Invalid ticker.');if(fields.some(f=>!values[f]))throw Error('Missing value.');const row={date:values.date,...Object.fromEntries(['open','high','low','close','volume'].map(f=>[f,Number(values[f])]))};(dataset[symbol]??=[]).push(row);}
+ return validateDataset(dataset);
+}
+export function instrument(symbol){return stocks.find(s=>s.symbol===symbol)||{symbol,name:symbol,zh:symbol};}
+

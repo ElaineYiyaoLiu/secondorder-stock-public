@@ -1,0 +1,31 @@
+{
+  "unchangedSevenRepresentations": true,
+  "unchangedSevenRankings": true,
+  "stress": [
+    {
+      "assets": 12,
+      "sessions": 3000,
+      "n": 10,
+      "candidates": 585,
+      "analogues": 8,
+      "milliseconds": 1286.520474
+    },
+    {
+      "assets": 12,
+      "sessions": 3000,
+      "n": 30,
+      "candidates": 577,
+      "analogues": 8,
+      "milliseconds": 942.0972299999999
+    },
+    {
+      "assets": 12,
+      "sessions": 3000,
+      "n": 120,
+      "candidates": 541,
+      "analogues": 8,
+      "milliseconds": 3114.8673750000003
+    }
+  ],
+  "notes": "Node runtime on this workspace, simulated data; not browser or market validation."
+}

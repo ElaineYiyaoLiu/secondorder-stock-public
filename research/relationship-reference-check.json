@@ -1,0 +1,8 @@
+{
+  "oracle": "NumPy corrcoef, independent average ranks and original finite-p OAS",
+  "maximumMatrixErrors": {
+    "linear": 2.3869795029440866e-15,
+    "rank": 4.996003610813204e-16
+  },
+  "passed": true
+}

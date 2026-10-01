@@ -1,0 +1,7 @@
+numpy==2.3.5
+pandas==2.2.3
+scipy==1.17.0
+ripser==0.6.15
+scikit-learn==1.8.0
+
+

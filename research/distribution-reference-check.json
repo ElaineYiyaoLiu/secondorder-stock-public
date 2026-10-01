@@ -1,0 +1,9 @@
+{
+  "modelCases": 300,
+  "unequalSampleCases": 100,
+  "distanceMaxError": 4.440892098500626e-16,
+  "channelMaxError": 8.881784197001252e-16,
+  "rawW1MaxError": 3.3306690738754696e-16,
+  "tailSummaryMaxError": 1.3877787807814457e-17,
+  "oracle": "SciPy weighted CDF transport, independently mass-truncated empirical tails"
+}

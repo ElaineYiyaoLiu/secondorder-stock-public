@@ -1,0 +1,730 @@
+{
+  "model": "candle-euclidean-v2",
+  "weights": {
+    "shape": 0.45,
+    "path": 0.25,
+    "volume": 0.15,
+    "regime": 0.15
+  },
+  "protocol": "Fixed weights, 30-session query, 20-session outcome, stride 20, six spaced neighbours, mature outcomes before query start. Development seeds and separate seed cohort, no tuning. Cohort averages are per-seed MAE; origins within each seed are dependent.",
+  "results": [
+    {
+      "kind": "null",
+      "cohort": "development",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 5.895954503869068,
+      "v2MAE": 5.883632329578565,
+      "unconditionalMAE": 5.690462883084138,
+      "zeroMAE": 5.452883969013848,
+      "v2Wins": 5,
+      "pairs": [
+        {
+          "seed": 1000,
+          "n": 46,
+          "legacyMAE": 7.3473774094653885,
+          "v2MAE": 7.350137074146099,
+          "unconditionalMAE": 7.5881690254771454,
+          "zeroMAE": 7.229572044098774
+        },
+        {
+          "seed": 1997,
+          "n": 46,
+          "legacyMAE": 6.503855400080707,
+          "v2MAE": 6.254559571982482,
+          "unconditionalMAE": 6.660795137048981,
+          "zeroMAE": 5.963083718532267
+        },
+        {
+          "seed": 2994,
+          "n": 46,
+          "legacyMAE": 5.85498942045772,
+          "v2MAE": 5.631990148516232,
+          "unconditionalMAE": 4.748357404467943,
+          "zeroMAE": 4.593295174448343
+        },
+        {
+          "seed": 3991,
+          "n": 46,
+          "legacyMAE": 5.262506275392866,
+          "v2MAE": 4.973622254388016,
+          "unconditionalMAE": 5.023294776864693,
+          "zeroMAE": 4.738882722977961
+        },
+        {
+          "seed": 4988,
+          "n": 46,
+          "legacyMAE": 4.7192267743813145,
+          "v2MAE": 5.086588740322064,
+          "unconditionalMAE": 4.9273176215087116,
+          "zeroMAE": 4.858049150008254
+        },
+        {
+          "seed": 5985,
+          "n": 46,
+          "legacyMAE": 6.468437725874599,
+          "v2MAE": 5.6041007029636845,
+          "unconditionalMAE": 6.354427078868207,
+          "zeroMAE": 5.595032971304963
+        },
+        {
+          "seed": 6982,
+          "n": 46,
+          "legacyMAE": 4.674819372875815,
+          "v2MAE": 5.071976435725516,
+          "unconditionalMAE": 4.9568859029660155,
+          "zeroMAE": 4.760173620782475
+        },
+        {
+          "seed": 7979,
+          "n": 46,
+          "legacyMAE": 7.294645974947628,
+          "v2MAE": 7.067185904182882,
+          "unconditionalMAE": 6.011705938720948,
+          "zeroMAE": 6.352299092695212
+        },
+        {
+          "seed": 8976,
+          "n": 46,
+          "legacyMAE": 5.410791865596115,
+          "v2MAE": 5.659877997965638,
+          "unconditionalMAE": 4.835412528540367,
+          "zeroMAE": 4.843435125122646
+        },
+        {
+          "seed": 9973,
+          "n": 46,
+          "legacyMAE": 5.665573160159857,
+          "v2MAE": 5.776027819765148,
+          "unconditionalMAE": 5.506326115953973,
+          "zeroMAE": 5.30925499643813
+        },
+        {
+          "seed": 10970,
+          "n": 46,
+          "legacyMAE": 6.815499048978295,
+          "v2MAE": 6.981271286592365,
+          "unconditionalMAE": 6.645315657952403,
+          "zeroMAE": 6.534805713072204
+        },
+        {
+          "seed": 11967,
+          "n": 46,
+          "legacyMAE": 4.7337316182185125,
+          "v2MAE": 5.146250018392669,
+          "unconditionalMAE": 5.027547408640278,
+          "zeroMAE": 4.656723298684939
+        }
+      ]
+    },
+    {
+      "kind": "null",
+      "cohort": "held-out-seeds",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.343153281405688,
+      "v2MAE": 6.174509294206184,
+      "unconditionalMAE": 5.857430466261422,
+      "zeroMAE": 5.631938904678262,
+      "v2Wins": 8,
+      "pairs": [
+        {
+          "seed": 9000,
+          "n": 46,
+          "legacyMAE": 5.804317431936185,
+          "v2MAE": 6.093447222627364,
+          "unconditionalMAE": 5.653850359619111,
+          "zeroMAE": 5.812268487661161
+        },
+        {
+          "seed": 9997,
+          "n": 46,
+          "legacyMAE": 8.06285483115022,
+          "v2MAE": 7.839377354787913,
+          "unconditionalMAE": 7.715253513323768,
+          "zeroMAE": 7.0066999679788475
+        },
+        {
+          "seed": 10994,
+          "n": 46,
+          "legacyMAE": 5.60397636436769,
+          "v2MAE": 5.197650076821222,
+          "unconditionalMAE": 4.36050540796184,
+          "zeroMAE": 4.226609899344467
+        },
+        {
+          "seed": 11991,
+          "n": 46,
+          "legacyMAE": 7.405342174127847,
+          "v2MAE": 6.713986392189679,
+          "unconditionalMAE": 5.838804509274095,
+          "zeroMAE": 5.48860405172632
+        },
+        {
+          "seed": 12988,
+          "n": 46,
+          "legacyMAE": 6.1381592725517375,
+          "v2MAE": 5.561717683841436,
+          "unconditionalMAE": 6.0276544151544815,
+          "zeroMAE": 6.3004090607639345
+        },
+        {
+          "seed": 13985,
+          "n": 46,
+          "legacyMAE": 6.682583049070614,
+          "v2MAE": 6.5352567329048386,
+          "unconditionalMAE": 5.86405180457182,
+          "zeroMAE": 5.692587163418267
+        },
+        {
+          "seed": 14982,
+          "n": 46,
+          "legacyMAE": 6.483208548535579,
+          "v2MAE": 6.070840860541961,
+          "unconditionalMAE": 5.046673293134221,
+          "zeroMAE": 4.720270532344469
+        },
+        {
+          "seed": 15979,
+          "n": 46,
+          "legacyMAE": 6.105071767723196,
+          "v2MAE": 6.559754509843461,
+          "unconditionalMAE": 6.251424016598325,
+          "zeroMAE": 5.78383509448452
+        },
+        {
+          "seed": 16976,
+          "n": 46,
+          "legacyMAE": 5.144915563828948,
+          "v2MAE": 5.91998874942388,
+          "unconditionalMAE": 5.7109562632692565,
+          "zeroMAE": 5.664209773830227
+        },
+        {
+          "seed": 17973,
+          "n": 46,
+          "legacyMAE": 6.7662530410099375,
+          "v2MAE": 5.944187101732354,
+          "unconditionalMAE": 5.896992598482819,
+          "zeroMAE": 5.583664680236746
+        },
+        {
+          "seed": 18970,
+          "n": 46,
+          "legacyMAE": 5.77301778565117,
+          "v2MAE": 6.011753574067778,
+          "unconditionalMAE": 6.4091996620103,
+          "zeroMAE": 5.887485319003049
+        },
+        {
+          "seed": 19967,
+          "n": 46,
+          "legacyMAE": 6.148139546915131,
+          "v2MAE": 5.646151271692323,
+          "unconditionalMAE": 5.51379975173703,
+          "zeroMAE": 5.4166228253471305
+        }
+      ]
+    },
+    {
+      "kind": "switching",
+      "cohort": "development",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 8.913458122604245,
+      "v2MAE": 8.608037519388018,
+      "unconditionalMAE": 8.086896242711637,
+      "zeroMAE": 7.43755948566589,
+      "v2Wins": 9,
+      "pairs": [
+        {
+          "seed": 1000,
+          "n": 46,
+          "legacyMAE": 10.080960192803218,
+          "v2MAE": 9.479745055435687,
+          "unconditionalMAE": 8.888712150890965,
+          "zeroMAE": 8.560811112896717
+        },
+        {
+          "seed": 1997,
+          "n": 46,
+          "legacyMAE": 9.605409743600129,
+          "v2MAE": 9.52280486116869,
+          "unconditionalMAE": 10.18706561460027,
+          "zeroMAE": 7.976147121580441
+        },
+        {
+          "seed": 2994,
+          "n": 46,
+          "legacyMAE": 8.012568048360905,
+          "v2MAE": 7.846757480234758,
+          "unconditionalMAE": 6.602536704343034,
+          "zeroMAE": 6.493133560699548
+        },
+        {
+          "seed": 3991,
+          "n": 46,
+          "legacyMAE": 8.079505899730966,
+          "v2MAE": 8.315198865750885,
+          "unconditionalMAE": 8.035397690757149,
+          "zeroMAE": 7.580933960790577
+        },
+        {
+          "seed": 4988,
+          "n": 46,
+          "legacyMAE": 7.704051722346046,
+          "v2MAE": 7.757920401611122,
+          "unconditionalMAE": 8.841824401432671,
+          "zeroMAE": 6.816963584941471
+        },
+        {
+          "seed": 5985,
+          "n": 46,
+          "legacyMAE": 7.2977307973946335,
+          "v2MAE": 7.287392301171726,
+          "unconditionalMAE": 6.728532571260413,
+          "zeroMAE": 6.627311379014574
+        },
+        {
+          "seed": 6982,
+          "n": 46,
+          "legacyMAE": 7.990126025931099,
+          "v2MAE": 7.606963046471821,
+          "unconditionalMAE": 7.439321782045239,
+          "zeroMAE": 7.171620950603347
+        },
+        {
+          "seed": 7979,
+          "n": 46,
+          "legacyMAE": 11.899407406422826,
+          "v2MAE": 11.186477974545001,
+          "unconditionalMAE": 10.18700124854735,
+          "zeroMAE": 9.595478273527291
+        },
+        {
+          "seed": 8976,
+          "n": 46,
+          "legacyMAE": 9.416989966219228,
+          "v2MAE": 9.26922582176971,
+          "unconditionalMAE": 7.93418699844712,
+          "zeroMAE": 7.504350982970164
+        },
+        {
+          "seed": 9973,
+          "n": 46,
+          "legacyMAE": 7.296789558766887,
+          "v2MAE": 7.584768440948618,
+          "unconditionalMAE": 7.118965359795315,
+          "zeroMAE": 7.038915483729182
+        },
+        {
+          "seed": 10970,
+          "n": 46,
+          "legacyMAE": 10.35522643081445,
+          "v2MAE": 9.666147857403995,
+          "unconditionalMAE": 7.939686381825054,
+          "zeroMAE": 7.489069190958219
+        },
+        {
+          "seed": 11967,
+          "n": 46,
+          "legacyMAE": 9.222731678860539,
+          "v2MAE": 7.7730481261442,
+          "unconditionalMAE": 7.139524008595069,
+          "zeroMAE": 6.39597822627915
+        }
+      ]
+    },
+    {
+      "kind": "switching",
+      "cohort": "held-out-seeds",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 9.547764183636728,
+      "v2MAE": 9.246538500379932,
+      "unconditionalMAE": 8.313783987568124,
+      "zeroMAE": 7.6495103974450025,
+      "v2Wins": 7,
+      "pairs": [
+        {
+          "seed": 9000,
+          "n": 46,
+          "legacyMAE": 9.77014206207325,
+          "v2MAE": 8.381133005477993,
+          "unconditionalMAE": 7.223739789045896,
+          "zeroMAE": 6.840722057295203
+        },
+        {
+          "seed": 9997,
+          "n": 46,
+          "legacyMAE": 11.903445708666638,
+          "v2MAE": 12.218722190993295,
+          "unconditionalMAE": 11.454468963977549,
+          "zeroMAE": 9.971886523741286
+        },
+        {
+          "seed": 10994,
+          "n": 46,
+          "legacyMAE": 8.170391400962703,
+          "v2MAE": 7.201729692513431,
+          "unconditionalMAE": 6.696677227708708,
+          "zeroMAE": 6.0861725537104885
+        },
+        {
+          "seed": 11991,
+          "n": 46,
+          "legacyMAE": 8.752220940886627,
+          "v2MAE": 9.47584576664263,
+          "unconditionalMAE": 8.601978357391559,
+          "zeroMAE": 7.834603236609842
+        },
+        {
+          "seed": 12988,
+          "n": 46,
+          "legacyMAE": 8.95221412426207,
+          "v2MAE": 8.079173486829681,
+          "unconditionalMAE": 7.985363135850813,
+          "zeroMAE": 8.150188936496823
+        },
+        {
+          "seed": 13985,
+          "n": 46,
+          "legacyMAE": 9.7027947333668,
+          "v2MAE": 8.735042272603689,
+          "unconditionalMAE": 8.058795945068894,
+          "zeroMAE": 7.846624933778682
+        },
+        {
+          "seed": 14982,
+          "n": 46,
+          "legacyMAE": 9.19226378143906,
+          "v2MAE": 10.755735448129657,
+          "unconditionalMAE": 8.050004494041405,
+          "zeroMAE": 6.778962978466192
+        },
+        {
+          "seed": 15979,
+          "n": 46,
+          "legacyMAE": 9.648937018822867,
+          "v2MAE": 8.354548719765784,
+          "unconditionalMAE": 7.465407521449747,
+          "zeroMAE": 7.20824313650379
+        },
+        {
+          "seed": 16976,
+          "n": 46,
+          "legacyMAE": 9.081292629491484,
+          "v2MAE": 7.621078209802073,
+          "unconditionalMAE": 8.19414808362256,
+          "zeroMAE": 7.314945256385829
+        },
+        {
+          "seed": 17973,
+          "n": 46,
+          "legacyMAE": 9.237253125046152,
+          "v2MAE": 10.012832414872625,
+          "unconditionalMAE": 7.723528007398863,
+          "zeroMAE": 7.382686883316183
+        },
+        {
+          "seed": 18970,
+          "n": 46,
+          "legacyMAE": 8.796236600882187,
+          "v2MAE": 10.38510814025289,
+          "unconditionalMAE": 10.123941854994783,
+          "zeroMAE": 8.11672368034229
+        },
+        {
+          "seed": 19967,
+          "n": 46,
+          "legacyMAE": 11.365978077740918,
+          "v2MAE": 9.737512656675422,
+          "unconditionalMAE": 8.187354470266708,
+          "zeroMAE": 8.26236459269341
+        }
+      ]
+    },
+    {
+      "kind": "repeated",
+      "cohort": "development",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.277362942321505,
+      "v2MAE": 6.299412995401988,
+      "unconditionalMAE": 6.178548008015237,
+      "zeroMAE": 5.841683682018181,
+      "v2Wins": 6,
+      "pairs": [
+        {
+          "seed": 1000,
+          "n": 46,
+          "legacyMAE": 7.644792222731524,
+          "v2MAE": 7.675365286645634,
+          "unconditionalMAE": 7.996692879202124,
+          "zeroMAE": 7.643411894016401
+        },
+        {
+          "seed": 1997,
+          "n": 46,
+          "legacyMAE": 6.890791525317474,
+          "v2MAE": 7.845752109136005,
+          "unconditionalMAE": 7.92802101937093,
+          "zeroMAE": 6.483817925135888
+        },
+        {
+          "seed": 2994,
+          "n": 46,
+          "legacyMAE": 5.8822552336846075,
+          "v2MAE": 5.6183076601733335,
+          "unconditionalMAE": 5.203507073244815,
+          "zeroMAE": 5.2203473611874704
+        },
+        {
+          "seed": 3991,
+          "n": 46,
+          "legacyMAE": 5.721110385471124,
+          "v2MAE": 5.939886132616497,
+          "unconditionalMAE": 5.545441978782025,
+          "zeroMAE": 5.529571164623151
+        },
+        {
+          "seed": 4988,
+          "n": 46,
+          "legacyMAE": 4.885622245703742,
+          "v2MAE": 5.358446088461075,
+          "unconditionalMAE": 5.617458467996943,
+          "zeroMAE": 5.42254790991539
+        },
+        {
+          "seed": 5985,
+          "n": 46,
+          "legacyMAE": 5.768106982888595,
+          "v2MAE": 5.802913935061092,
+          "unconditionalMAE": 6.254809457528138,
+          "zeroMAE": 5.201603889702571
+        },
+        {
+          "seed": 6982,
+          "n": 46,
+          "legacyMAE": 6.237195572552783,
+          "v2MAE": 6.011013123657036,
+          "unconditionalMAE": 5.872212443745583,
+          "zeroMAE": 5.582138359816093
+        },
+        {
+          "seed": 7979,
+          "n": 46,
+          "legacyMAE": 7.461234907881262,
+          "v2MAE": 7.111431981753829,
+          "unconditionalMAE": 6.213736079661272,
+          "zeroMAE": 6.684715233284557
+        },
+        {
+          "seed": 8976,
+          "n": 46,
+          "legacyMAE": 5.420080268846528,
+          "v2MAE": 5.73691904251612,
+          "unconditionalMAE": 5.318518817447177,
+          "zeroMAE": 4.998739987309499
+        },
+        {
+          "seed": 9973,
+          "n": 46,
+          "legacyMAE": 6.956050974946183,
+          "v2MAE": 6.572171175832415,
+          "unconditionalMAE": 6.497306461981327,
+          "zeroMAE": 6.230424226469744
+        },
+        {
+          "seed": 10970,
+          "n": 46,
+          "legacyMAE": 7.423967116655601,
+          "v2MAE": 7.114128634998744,
+          "unconditionalMAE": 6.814997848434385,
+          "zeroMAE": 6.6237821375624995
+        },
+        {
+          "seed": 11967,
+          "n": 46,
+          "legacyMAE": 5.0371478711786315,
+          "v2MAE": 4.80662077397207,
+          "unconditionalMAE": 4.87987356878813,
+          "zeroMAE": 4.479104095194918
+        }
+      ]
+    },
+    {
+      "kind": "repeated",
+      "cohort": "held-out-seeds",
+      "seeds": 12,
+      "origins": 552,
+      "legacyMAE": 6.78965268479061,
+      "v2MAE": 6.767005488333537,
+      "unconditionalMAE": 6.43322331043106,
+      "zeroMAE": 6.207090393091845,
+      "v2Wins": 6,
+      "pairs": [
+        {
+          "seed": 9000,
+          "n": 46,
+          "legacyMAE": 6.526346035686231,
+          "v2MAE": 6.612619843954124,
+          "unconditionalMAE": 6.499496964489327,
+          "zeroMAE": 6.4493196288722965
+        },
+        {
+          "seed": 9997,
+          "n": 46,
+          "legacyMAE": 8.676299009494091,
+          "v2MAE": 8.44858294499513,
+          "unconditionalMAE": 8.382005510782609,
+          "zeroMAE": 7.715588113141132
+        },
+        {
+          "seed": 10994,
+          "n": 46,
+          "legacyMAE": 6.507913338564114,
+          "v2MAE": 6.157760915765712,
+          "unconditionalMAE": 5.307981709185226,
+          "zeroMAE": 5.1206610322487265
+        },
+        {
+          "seed": 11991,
+          "n": 46,
+          "legacyMAE": 7.405839020252393,
+          "v2MAE": 7.750641127273952,
+          "unconditionalMAE": 6.95738082233588,
+          "zeroMAE": 6.527752121462956
+        },
+        {
+          "seed": 12988,
+          "n": 46,
+          "legacyMAE": 6.653882585238364,
+          "v2MAE": 5.929339294879516,
+          "unconditionalMAE": 6.320242344458791,
+          "zeroMAE": 6.309387299673179
+        },
+        {
+          "seed": 13985,
+          "n": 46,
+          "legacyMAE": 7.266766352089979,
+          "v2MAE": 7.5247622073264075,
+          "unconditionalMAE": 7.052181678454219,
+          "zeroMAE": 6.872425711546311
+        },
+        {
+          "seed": 14982,
+          "n": 46,
+          "legacyMAE": 5.536688740699948,
+          "v2MAE": 6.280562948696555,
+          "unconditionalMAE": 5.42845656462281,
+          "zeroMAE": 5.155127614947746
+        },
+        {
+          "seed": 15979,
+          "n": 46,
+          "legacyMAE": 6.995467470748223,
+          "v2MAE": 6.704772604709274,
+          "unconditionalMAE": 6.904400827416543,
+          "zeroMAE": 6.3677769663656125
+        },
+        {
+          "seed": 16976,
+          "n": 46,
+          "legacyMAE": 5.83974917721442,
+          "v2MAE": 6.090532911019237,
+          "unconditionalMAE": 5.56476182488793,
+          "zeroMAE": 5.540790844127564
+        },
+        {
+          "seed": 17973,
+          "n": 46,
+          "legacyMAE": 7.027306193109588,
+          "v2MAE": 6.719895748000755,
+          "unconditionalMAE": 6.698800847159549,
+          "zeroMAE": 6.293923317520858
+        },
+        {
+          "seed": 18970,
+          "n": 46,
+          "legacyMAE": 6.741115040329567,
+          "v2MAE": 7.012847177836403,
+          "unconditionalMAE": 6.631658435323935,
+          "zeroMAE": 6.519764744570046
+        },
+        {
+          "seed": 19967,
+          "n": 46,
+          "legacyMAE": 6.2984592540604,
+          "v2MAE": 5.971748135545368,
+          "unconditionalMAE": 5.451312196055913,
+          "zeroMAE": 5.612567322625723
+        }
+      ]
+    }
+  ],
+  "demo": [
+    {
+      "symbol": "NVDA",
+      "n": 11,
+      "legacyMAE": 4.025469061205032,
+      "v2MAE": 4.645954623830785,
+      "unconditionalMAE": 4.5378671605534
+    },
+    {
+      "symbol": "AAPL",
+      "n": 11,
+      "legacyMAE": 3.817720920621073,
+      "v2MAE": 3.865778067333919,
+      "unconditionalMAE": 4.868197391415378
+    },
+    {
+      "symbol": "MSFT",
+      "n": 11,
+      "legacyMAE": 3.5720985476526845,
+      "v2MAE": 2.8039027541733854,
+      "unconditionalMAE": 3.250510829448933
+    },
+    {
+      "symbol": "AMZN",
+      "n": 11,
+      "legacyMAE": 3.8400662330547557,
+      "v2MAE": 3.4228941674786104,
+      "unconditionalMAE": 3.6913360376009994
+    },
+    {
+      "symbol": "META",
+      "n": 11,
+      "legacyMAE": 5.754807713419319,
+      "v2MAE": 6.247865992838572,
+      "unconditionalMAE": 6.13304666893523
+    },
+    {
+      "symbol": "SPY",
+      "n": 11,
+      "legacyMAE": 4.019039817499916,
+      "v2MAE": 3.602961804198167,
+      "unconditionalMAE": 3.227466924537627
+    },
+    {
+      "symbol": "QQQ",
+      "n": 11,
+      "legacyMAE": 4.08898714968352,
+      "v2MAE": 3.365101927662924,
+      "unconditionalMAE": 3.2446482194269306
+    },
+    {
+      "symbol": "TSLA",
+      "n": 11,
+      "legacyMAE": 3.882981667078501,
+      "v2MAE": 3.8770499789809745,
+      "unconditionalMAE": 2.580857434455562
+    }
+  ],
+  "limitations": [
+    "Synthetic processes only; no real market data or alpha evidence.",
+    "Held-out seeds share the same generators; this is not a held-out market regime.",
+    "No confidence intervals or claim of statistical significance.",
+    "Fixed weights and scale floor remain modeling assumptions."
+  ]
+}
