@@ -1,7 +1,7 @@
 # SecondOrder Stock publishing
 
-Application release: v0.10. Private development versions are preserved in `secondorder-stock-private/v0.X`. The released source is mirrored to `secondorder-stock-public/main`, which supplies the `secondorder-stock-public` Vercel project. Intended domain: `stock.secondorder.tools`, with the portal entry at `secondorder.tools/stock`.
+Version v0.11 aligns the complete wordmark with Markets/Homology, adds a three-step workflow, a shared Twelve Data import and runnable geometry result cards.
 
-The public source contains no provider credentials. Configure TWELVE_DATA_API_KEY only in the deployment environment when live provider use is needed. Sample data and local CSV imports need no key.
+Private development uses versioned branches in secondorder-stock-private; public releases use secondorder-stock-public/main and its Vercel project. /stock is embedded at secondorder.tools. The custom Stock domain awaits DNS configuration.
 
-Run npm test and npm run build before publishing. Verify both languages, portal language propagation, the displayed version, responsive layout and mature historical outcomes. The eight models remain experimental; see each model document for negative forecasting evidence and limitations.
+Real history uses TWELVE_DATA_API_KEY on the server when configured; otherwise it requests the existing Markets service. A demo response is rejected. The shared service currently reports not-configured, so CSV import and clearly labelled samples remain available. Keys must never be committed or placed in client code.

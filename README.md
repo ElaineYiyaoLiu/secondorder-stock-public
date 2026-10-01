@@ -1,6 +1,6 @@
 This is SecondOrder Stock, a bilingual workspace for finding historical market analogues and comparing what happened next.
 
-Development version: **v0.4**
+Development version: **v0.11**
 
 Explore a candlestick chart, select 10–120 sessions, and find past periods through eight representations. Results show agreement, rebased price overlays, and 5/20/60-session outcome summaries. Geometry exposes the representations, correlation matrix and persistence barcodes. Lab runs an exploratory walk-forward comparison against a past-only unconditional baseline.
 
@@ -14,7 +14,7 @@ The default data is **synthetic**, copied from the deterministic Project 02 fixt
 
 Import daily OHLCV as `symbol,date,open,high,low,close,volume`. Use consistently adjusted OHLC and volume, strictly increasing completed dates, and 180–3000 bars per symbol. Files stay in the browser. Basket methods require 3–12 assets with identical dates. Single-symbol or misaligned datasets disable basket methods; real and synthetic sources are never mixed.
 
-An optional server-side Twelve Data adapter is available at `/api/history?symbol=NVDA`. Set `TWELVE_DATA_API_KEY` in Vercel environment settings. The key stays server-side. Provider failure preserves the current dataset. Provider-default adjustment needs checking before research; live data has not been validated with an account/key.
+An optional server-side Twelve Data adapter is available at `/api/history?symbol=NVDA`. Set `TWELVE_DATA_API_KEY` in Vercel environment settings. The key stays server-side. Provider failure preserves the current dataset. Direct requests use adjust=all; the shared Markets connection uses provider-default adjustments. Live data cannot load until a Twelve Data server connection is configured.
 
 ## Run
 
@@ -36,7 +36,7 @@ Based on the inspected Private `v0.1` versions:
 - Project 04, `ElaineYiyaoLiu/secondorder-homology-private`, commit `50dbdd14c63b254d5663ac3deaec4bc3d34051e3`: correlation-distance and persistent-homology methodology, past-only validation rules. Its full original Python pipeline is retained in `research/homology.py`, with dependencies in `research/requirements.txt`.
 - SecondOrder site `v0.1`, commit `f7abfae222db977fd12c360757e53e107b0f2762`: typography and blue/copper brand system.
 
-Development version: `secondorder-stock-private / v0.4`. Historical `v0.1`, `v0.2` and `v0.3` branches are retained. Production remains on `v0.1`; this change has not been published. The inspected Stock project is connected to the Private repository and has no Public mirror.
+Development: `secondorder-stock-private / v0.11`; earlier numbered branches remain intact. Production: `secondorder-stock-public / main`, deployed independently and embedded at https://secondorder.tools/stock.
 
 The first geometry now compares candle shape, ordered price path, relative volume and volatility in a fixed weighted Euclidean embedding. The second geometry compares normalized close paths and daily changes with regularized DTW, endpoint returns and volatility anchors. The third geometry combines robust linear and tied-rank correlations with window-local identity shrinkage, explicit asset labels and undefined-correlation handling. The fourth geometry now compares robust labelled covariance states with adaptive spherical shrinkage, dimension-normalized affine-invariant distance and explicit flat-window exclusion. The fifth geometry now uses smooth fixed-unit return compression and exact empirical transport across full and 20% tail distributions; tail means and effective sample mass are reported. The sixth geometry now matches complete robust linear and rank persistence diagrams with exact diagonal-aware W2, and excludes constant-return topology. The seventh geometry now uses robust multiresolution state-tree prefixes with neutral bands, explicit volume coverage and six refinement rounds; zero distance means a shared quantized leaf. The eighth geometry now uses time-augmented four-channel step-2 log signatures across the whole window, halves and quarters, plus activity and zero-volume anchors. This is a fixed weighted feature distance, not an intrinsic Lie-group distance. Basket date alignment is window-local, so future mismatches cannot disable past windows. Lab compares methods on shared origins and reports coverage. Search parameters are validated and duplicate method IDs cannot inflate agreement.
 
@@ -51,3 +51,8 @@ Topology design, independent verification and limitations: [TOPOLOGY_MODEL.md](T
 Hierarchy design, independent verification and limitations: [HIERARCHY_MODEL.md](HIERARCHY_MODEL.md). Reproduce with `npm run validate:hierarchy`, `node scripts/hierarchy-reference-fixture.mjs` and `python scripts/check-hierarchy-reference.py` (NumPy required).
 
 Path-order design, independent tensor verification and limitations: [SIGNATURE_MODEL.md](SIGNATURE_MODEL.md). Reproduce with `npm run validate:signature`, `node scripts/signature-reference-fixture.mjs` and `python scripts/check-signature-reference.py` (NumPy required). Synthetic linked-drift forecasts worsened versus the old signature; no prediction advantage is established.
+
+
+v0.11 unifies the complete SecondOrder Stock wordmark, adds a guided data → period → comparison flow, and lets users run all selected geometries or each geometry directly from the results page. Cards show real execution status and per-method distances.
+
+The history endpoint uses Twelve Data, as in Markets and Homology. A local server key requests adjust=all; without a key, Stock reuses the public Markets server connection and strictly rejects its demo fallback. The current Markets connection is not configured. CSV import remains available. Multi-asset methods require aligned dates; partial or unaligned basket downloads are not committed.

@@ -3,13 +3,8 @@ import assert from 'node:assert/strict';
 import handler from '../api/history.js';
 import {sampleDataset} from '../public/data.js';
 function response(){return {headers:{},code:200,setHeader(k,v){this.headers[k]=v;},status(n){this.code=n;return this;},json(data){this.data=data;return this;}};}
-test('Absent provider key returns 503 with no simulated provider bars',async()=>{
- const previous=process.env.TWELVE_DATA_API_KEY;delete process.env.TWELVE_DATA_API_KEY;
- try{const res=response();await handler({query:{symbol:'NVDA'}},res);assert.equal(res.code,503);assert.ok(res.data.error);assert.equal(res.data.rows,undefined);}finally{if(previous!==undefined)process.env.TWELVE_DATA_API_KEY=previous;}
-});
-test('Provider mapping validates history and never exposes its server-side key',async()=>{
- const previous=process.env.TWELVE_DATA_API_KEY,fetch=globalThis.fetch;process.env.TWELVE_DATA_API_KEY='test-only-provider-key';
- globalThis.fetch=async()=>({ok:true,json:async()=>({values:sampleDataset().NVDA.map(r=>({datetime:r.date,...Object.fromEntries(['open','high','low','close','volume'].map(k=>[k,String(r[k])]))}))})});
- try{const res=response();await handler({query:{symbol:'NVDA'}},res);assert.equal(res.code,200);assert.equal(res.data.rows.length,500);assert.equal(res.data.source,'twelve-data');assert.ok(!JSON.stringify(res.data).includes('test-only-provider-key'));}finally{globalThis.fetch=fetch;if(previous===undefined)delete process.env.TWELVE_DATA_API_KEY;else process.env.TWELVE_DATA_API_KEY=previous;}
-});
-
+async function withProvider(key,fetcher,fn){const previous=process.env.TWELVE_DATA_API_KEY,originalFetch=globalThis.fetch;if(key)process.env.TWELVE_DATA_API_KEY=key;else delete process.env.TWELVE_DATA_API_KEY;globalThis.fetch=fetcher;try{await fn();}finally{globalThis.fetch=originalFetch;if(previous!==undefined)process.env.TWELVE_DATA_API_KEY=previous;else delete process.env.TWELVE_DATA_API_KEY;}}
+test('Shared Markets demo fallback is rejected, never imported as real history',()=>withProvider(null,async()=>({ok:true,json:async()=>({source:'demo',reason:'not-configured'})}),async()=>{const res=response();await handler({query:{symbol:'NVDA',basket:'1'}},res);assert.equal(res.code,503);assert.equal(res.data.code,'provider-not-configured');assert.equal(res.data.rows,undefined);}));
+test('Shared Twelve Data connection loads an aligned basket for every geometry',()=>withProvider(null,async url=>{const symbol=new URL(url).searchParams.get('symbol');return {ok:true,json:async()=>({symbol,source:'twelve-data',rows:sampleDataset()[symbol]})};},async()=>{const res=response();await handler({query:{symbol:'NVDA',basket:'1'}},res);assert.equal(res.code,200);assert.equal(Object.keys(res.data.dataset).length,8);assert.equal(res.data.connection,'shared-markets');assert.equal(res.data.rows.length,500);}));
+test('Direct provider requests adjusted daily history without exposing credentials',()=>withProvider('test-only-provider-key',async url=>{assert.equal(url.searchParams.get('adjust'),'all');return {ok:true,json:async()=>({values:sampleDataset().AAPL.map(r=>({datetime:r.date,...Object.fromEntries(['open','high','low','close','volume'].map(k=>[k,String(r[k])]))}))})};},async()=>{const res=response();await handler({query:{symbol:'AAPL'}},res);assert.equal(res.code,200);assert.equal(res.data.source,'twelve-data');assert.equal(res.data.adjustment,'all');assert.ok(!JSON.stringify(res.data).includes('test-only-provider-key'));}));
+test('Partial provider failure leaves no partial basket or fabricated data',()=>withProvider('test-only-provider-key',async()=>({ok:false}),async()=>{const res=response();await handler({query:{symbol:'TSLA',basket:'1'}},res);assert.equal(res.code,502);assert.equal(res.data.dataset,undefined);}));
