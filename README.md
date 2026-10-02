@@ -14,7 +14,7 @@ The default data is **synthetic**, copied from the deterministic Project 02 fixt
 
 Import daily OHLCV as `symbol,date,open,high,low,close,volume`. Use consistently adjusted OHLC and volume, strictly increasing completed dates, and 180–3000 bars per symbol. Files stay in the browser. Basket methods require 3–12 assets with identical dates. Single-symbol or misaligned datasets disable basket methods; real and synthetic sources are never mixed.
 
-The server-side Marketstack v2 adapter at `/api/history?symbol=NVDA` uses `MARKETSTACK_API_KEY` from Vercel Production. It loads the past 365 calendar days over HTTPS, paginates up to 4000 records, uses adjusted OHLCV and aligns basket dates by intersection. At least 180 completed aligned bars are required. Provider errors preserve the current dataset; secrets and raw provider errors are never returned. Successful requests are coalesced and cached for 15 minutes.
+The server-side Marketstack v2 adapter at `/api/history?symbol=NVDA` uses `MARKETSTACK_API_KEY` from Vercel Production. It loads the past 365 calendar days over HTTPS, paginates up to 4000 records, uses adjusted OHLCV when all fields are supplied, otherwise consistently raw OHLCV with an explicit unadjusted-data warning and aligns basket dates by intersection. At least 180 completed aligned bars are required. Provider errors preserve the current dataset; secrets and raw provider errors are never returned. Successful requests are coalesced and cached for 15 minutes.
 
 ## Run
 

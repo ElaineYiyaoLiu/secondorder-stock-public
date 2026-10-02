@@ -34,12 +34,14 @@ async function load(symbols,key){
   if(!data.data.length)throw failure('provider-invalid-data');
  }
  if(!done)throw failure('provider-invalid-data',502,{stage:'pagination-bound'});
+ const fields=['open','high','low','close','volume'];
+ const adjusted=records.length>0&&records.every(r=>fields.every(f=>r['adj_'+f]!==null&&r['adj_'+f]!==undefined&&r['adj_'+f]!==''&&Number.isFinite(Number(r['adj_'+f]))));
  for(const record of records){
   if(!symbols.includes(record.symbol)||typeof record.date!=='string')throw failure('provider-invalid-data',502,{stage:'unexpected-symbol-or-date'});
   const date=record.date.slice(0,10);if(date>=today)continue;
-  const fields=['open','high','low','close','volume'];
-  if(fields.some(f=>record['adj_'+f]===null||record['adj_'+f]===undefined||record['adj_'+f]===''))throw failure('provider-invalid-data',502,{stage:'missing-adjusted-fields'});
-  const row={date,...Object.fromEntries(fields.map(f=>[f,Number(record['adj_'+f])]))};
+  const prefix=adjusted?'adj_':'';
+  if(fields.some(f=>record[prefix+f]===null||record[prefix+f]===undefined||record[prefix+f]===''))throw failure('provider-invalid-data',502,{stage:'missing-OHLCV-fields'});
+  const row={date,...Object.fromEntries(fields.map(f=>[f,Number(record[prefix+f])]))};
   if(!validCandle(row))throw failure('provider-invalid-data',502,{stage:'invalid-adjusted-bar',open:row.open,high:row.high,low:row.low,close:row.close,volume:row.volume});
   if(maps[record.symbol].has(date))throw failure('provider-invalid-data',502,{stage:'duplicate-date'});
   maps[record.symbol].set(date,row);
@@ -47,7 +49,7 @@ async function load(symbols,key){
  const dates=[...maps[symbols[0]].keys()].filter(d=>symbols.every(s=>maps[s].has(d))).sort();
  if(dates.length<180)throw failure('provider-history',422);
  const dataset=Object.fromEntries(symbols.map(s=>[s,dates.map(d=>maps[s].get(d))]));validateDataset(dataset);
- return {dataset,source:'marketstack',connection:'direct',asOf:dates.at(-1),adjustment:'all',aligned:true,historyDays:365,droppedRows:Object.fromEntries(symbols.map(s=>[s,maps[s].size-dates.length]))};
+ return {dataset,source:'marketstack',connection:'direct',asOf:dates.at(-1),adjustment:adjusted?'all':'unadjusted',aligned:true,historyDays:365,droppedRows:Object.fromEntries(symbols.map(s=>[s,maps[s].size-dates.length]))};
 }
 export default async function handler(req,res){
  res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');
