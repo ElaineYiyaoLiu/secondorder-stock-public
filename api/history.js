@@ -2,7 +2,7 @@ import {stocks} from '../public/market.js';
 import {validateDataset,BASKET,validCandle} from '../public/data.js';
 export const config={maxDuration:60};
 const cache=new Map(),pending=new Map();
-const failure=(code,status=502)=>Object.assign(Error(code),{code,status});
+const failure=(code,status=502,detail=null)=>Object.assign(Error(code),{code,status,detail});
 const errors={
  'provider-not-configured':'Configure MARKETSTACK_API_KEY in the Production environment, then redeploy.',
  'provider-auth':'Marketstack rejected the API key. Check the saved Production key and redeploy.',
@@ -28,19 +28,20 @@ async function load(symbols,key){
    if(response.status===403||/restricted|https|function_access/.test(code))throw failure('provider-plan',403);
    throw failure('provider-unavailable');
   }
-  if(!Array.isArray(data.data)||!data.pagination||data.pagination.offset!==offset||data.pagination.count!==data.data.length||!Number.isSafeInteger(data.pagination.total)||data.pagination.total<offset+data.data.length)throw failure('provider-invalid-data');
+  if(!Array.isArray(data.data)||!data.pagination||data.pagination.offset!==offset||data.pagination.count!==data.data.length||!Number.isSafeInteger(data.pagination.total)||data.pagination.total<offset+data.data.length)throw failure('provider-invalid-data',502,{stage:'pagination',offset:Number(data.pagination?.offset),expectedOffset:offset,count:Number(data.pagination?.count),records:data.data?.length,total:Number(data.pagination?.total)});
   records.push(...data.data);offset+=data.data.length;
   if(offset>=data.pagination.total){done=true;break;}
   if(!data.data.length)throw failure('provider-invalid-data');
  }
- if(!done)throw failure('provider-invalid-data');
+ if(!done)throw failure('provider-invalid-data',502,{stage:'pagination-bound'});
  for(const record of records){
-  if(!symbols.includes(record.symbol)||typeof record.date!=='string')throw failure('provider-invalid-data');
+  if(!symbols.includes(record.symbol)||typeof record.date!=='string')throw failure('provider-invalid-data',502,{stage:'unexpected-symbol-or-date'});
   const date=record.date.slice(0,10);if(date>=today)continue;
   const fields=['open','high','low','close','volume'];
-  if(fields.some(f=>record['adj_'+f]===null||record['adj_'+f]===undefined||record['adj_'+f]===''))throw failure('provider-invalid-data');
+  if(fields.some(f=>record['adj_'+f]===null||record['adj_'+f]===undefined||record['adj_'+f]===''))throw failure('provider-invalid-data',502,{stage:'missing-adjusted-fields'});
   const row={date,...Object.fromEntries(fields.map(f=>[f,Number(record['adj_'+f])]))};
-  if(!validCandle(row)||maps[record.symbol].has(date))throw failure('provider-invalid-data');
+  if(!validCandle(row))throw failure('provider-invalid-data',502,{stage:'invalid-adjusted-bar',open:row.open,high:row.high,low:row.low,close:row.close,volume:row.volume});
+  if(maps[record.symbol].has(date))throw failure('provider-invalid-data',502,{stage:'duplicate-date'});
   maps[record.symbol].set(date,row);
  }
  const dates=[...maps[symbols[0]].keys()].filter(d=>symbols.every(s=>maps[s].has(d))).sort();
@@ -62,5 +63,5 @@ export default async function handler(req,res){
    try{const result=await request;data={until:Date.now()+900000,result};cache.set(cacheKey,data);}finally{if(pending.get(cacheKey)===request)pending.delete(cacheKey);}
   }
   return res.json({...data.result,symbol,rows:data.result.dataset[symbol]});
- }catch(e){return res.status(e.status||502).json({code:errors[e.code]?e.code:'provider-unavailable',error:errors[e.code]||errors['provider-unavailable']});}
+ }catch(e){return res.status(e.status||502).json({code:errors[e.code]?e.code:'provider-unavailable',error:errors[e.code]||errors['provider-unavailable'],...(e.detail?{detail:e.detail}:{})});}
 }
