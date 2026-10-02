@@ -35,8 +35,10 @@ async function load(symbols,key){
  }
  if(!done)throw failure('provider-invalid-data',502,{stage:'pagination-bound'});
  const fields=['open','high','low','close','volume'];
- const adjusted=records.length>0&&records.every(r=>fields.every(f=>r['adj_'+f]!==null&&r['adj_'+f]!==undefined&&r['adj_'+f]!==''&&Number.isFinite(Number(r['adj_'+f]))));
- for(const record of records){
+ const excludedRows=Object.fromEntries(symbols.map(s=>[s,0]));
+ const usable=records.filter(r=>{if(!symbols.includes(r.symbol))throw failure('provider-invalid-data',502,{stage:'unexpected-symbol'});const ok=fields.every(f=>r[f]!==null&&r[f]!==undefined&&r[f]!==''&&Number.isFinite(Number(r[f])));if(!ok)excludedRows[r.symbol]++;return ok;});
+ const adjusted=usable.length>0&&usable.every(r=>fields.every(f=>r['adj_'+f]!==null&&r['adj_'+f]!==undefined&&r['adj_'+f]!==''&&Number.isFinite(Number(r['adj_'+f]))));
+ for(const record of usable){
   if(!symbols.includes(record.symbol)||typeof record.date!=='string')throw failure('provider-invalid-data',502,{stage:'unexpected-symbol-or-date'});
   const date=record.date.slice(0,10);if(date>=today)continue;
   const prefix=adjusted?'adj_':'';
@@ -47,9 +49,9 @@ async function load(symbols,key){
   maps[record.symbol].set(date,row);
  }
  const dates=[...maps[symbols[0]].keys()].filter(d=>symbols.every(s=>maps[s].has(d))).sort();
- if(dates.length<180)throw failure('provider-history',422);
+ if(dates.length<180)throw failure('provider-history',422,{usableBars:Object.fromEntries(symbols.map(s=>[s,maps[s].size])),excludedRows,alignedBars:dates.length});
  const dataset=Object.fromEntries(symbols.map(s=>[s,dates.map(d=>maps[s].get(d))]));validateDataset(dataset);
- return {dataset,source:'marketstack',connection:'direct',asOf:dates.at(-1),adjustment:adjusted?'all':'unadjusted',aligned:true,historyDays:365,droppedRows:Object.fromEntries(symbols.map(s=>[s,maps[s].size-dates.length]))};
+ return {dataset,source:'marketstack',connection:'direct',asOf:dates.at(-1),adjustment:adjusted?'all':'unadjusted',aligned:true,historyDays:365,excludedRows,droppedRows:Object.fromEntries(symbols.map(s=>[s,maps[s].size-dates.length]))};
 }
 export default async function handler(req,res){
  res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');
