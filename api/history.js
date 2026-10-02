@@ -36,8 +36,8 @@ async function load(symbols,key){
  if(!done)throw failure('provider-invalid-data',502,{stage:'pagination-bound'});
  const fields=['open','high','low','close','volume'];
  const excludedRows=Object.fromEntries(symbols.map(s=>[s,0]));
- const usable=records.filter(r=>{if(!symbols.includes(r.symbol))throw failure('provider-invalid-data',502,{stage:'unexpected-symbol'});const ok=fields.every(f=>r[f]!==null&&r[f]!==undefined&&r[f]!==''&&Number.isFinite(Number(r[f])));if(!ok)excludedRows[r.symbol]++;return ok;});
- const adjusted=usable.length>0&&usable.every(r=>fields.every(f=>r['adj_'+f]!==null&&r['adj_'+f]!==undefined&&r['adj_'+f]!==''&&Number.isFinite(Number(r['adj_'+f]))));
+ const usable=records.filter(r=>{if(!symbols.includes(r.symbol))throw failure('provider-invalid-data',502,{stage:'unexpected-symbol'});const ok=fields.every(f=>r[f]!==null&&r[f]!==undefined&&r[f]!==''&&Number.isFinite(Number(r[f])))&&typeof r.date==='string'&&validCandle({date:r.date.slice(0,10),...Object.fromEntries(fields.map(f=>[f,Number(r[f])]))});if(!ok)excludedRows[r.symbol]++;return ok;});
+ const adjusted=usable.length>0&&usable.every(r=>fields.every(f=>r['adj_'+f]!==null&&r['adj_'+f]!==undefined&&r['adj_'+f]!==''&&Number.isFinite(Number(r['adj_'+f])))&&validCandle({date:r.date.slice(0,10),...Object.fromEntries(fields.map(f=>[f,Number(r['adj_'+f])]))}));
  for(const record of usable){
   if(!symbols.includes(record.symbol)||typeof record.date!=='string')throw failure('provider-invalid-data',502,{stage:'unexpected-symbol-or-date'});
   const date=record.date.slice(0,10);if(date>=today)continue;
