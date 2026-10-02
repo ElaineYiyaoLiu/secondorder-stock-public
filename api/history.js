@@ -1,35 +1,66 @@
 import {stocks} from '../public/market.js';
-import {validateDataset,BASKET} from '../public/data.js';
-const cache=new Map();
+import {validateDataset,BASKET,validCandle} from '../public/data.js';
+export const config={maxDuration:60};
+const cache=new Map(),pending=new Map();
+const failure=(code,status=502)=>Object.assign(Error(code),{code,status});
+const errors={
+ 'provider-not-configured':'Configure MARKETSTACK_API_KEY in the Production environment, then redeploy.',
+ 'provider-auth':'Marketstack rejected the API key. Check the saved Production key and redeploy.',
+ 'provider-plan':'Your Marketstack plan does not permit this HTTPS history request. Check account permissions or import CSV.',
+ 'provider-quota':'Marketstack request quota or rate limit reached. Try later or import CSV.',
+ 'provider-history':'Marketstack returned fewer than 180 aligned completed daily bars. Import a longer aligned CSV.',
+ 'provider-invalid-data':'Marketstack returned incomplete or invalid adjusted OHLCV. Your current data was kept.',
+ 'provider-unavailable':'Marketstack history is temporarily unavailable. Your current data was kept.'
+};
+async function load(symbols,key){
+ const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const from=new Date(today+'T12:00:00Z');from.setUTCDate(from.getUTCDate()-365);
+ const to=new Date(today+'T12:00:00Z');to.setUTCDate(to.getUTCDate()-1);
+ const records=[],maps=Object.fromEntries(symbols.map(s=>[s,new Map()]));let offset=0,done=false;
+ for(let page=0;page<4;page++){
+  const url=new URL('https://api.marketstack.com/v2/eod');
+  Object.entries({access_key:key,symbols:symbols.join(','),date_from:from.toISOString().slice(0,10),date_to:to.toISOString().slice(0,10),sort:'DESC',limit:'1000',offset:String(offset)}).forEach(([k,v])=>url.searchParams.set(k,v));
+  const response=await fetch(url,{signal:AbortSignal.timeout(12000)}),data=await response.json();
+  if(!response.ok||data.error){
+   const code=String(data.error?.code||'');
+   if(response.status===401||/access_key|authentication/.test(code))throw failure('provider-auth',401);
+   if(response.status===429||/limit|quota/.test(code))throw failure('provider-quota',429);
+   if(response.status===403||/restricted|https|function_access/.test(code))throw failure('provider-plan',403);
+   throw failure('provider-unavailable');
+  }
+  if(!Array.isArray(data.data)||!data.pagination||data.pagination.offset!==offset||data.pagination.count!==data.data.length||!Number.isSafeInteger(data.pagination.total)||data.pagination.total<offset+data.data.length)throw failure('provider-invalid-data');
+  records.push(...data.data);offset+=data.data.length;
+  if(offset>=data.pagination.total){done=true;break;}
+  if(!data.data.length)throw failure('provider-invalid-data');
+ }
+ if(!done)throw failure('provider-invalid-data');
+ for(const record of records){
+  if(!symbols.includes(record.symbol)||typeof record.date!=='string')throw failure('provider-invalid-data');
+  const date=record.date.slice(0,10);if(date>=today)continue;
+  const fields=['open','high','low','close','volume'];
+  if(fields.some(f=>record['adj_'+f]===null||record['adj_'+f]===undefined||record['adj_'+f]===''))throw failure('provider-invalid-data');
+  const row={date,...Object.fromEntries(fields.map(f=>[f,Number(record['adj_'+f])]))};
+  if(!validCandle(row)||maps[record.symbol].has(date))throw failure('provider-invalid-data');
+  maps[record.symbol].set(date,row);
+ }
+ const dates=[...maps[symbols[0]].keys()].filter(d=>symbols.every(s=>maps[s].has(d))).sort();
+ if(dates.length<180)throw failure('provider-history',422);
+ const dataset=Object.fromEntries(symbols.map(s=>[s,dates.map(d=>maps[s].get(d))]));validateDataset(dataset);
+ return {dataset,source:'marketstack',connection:'direct',asOf:dates.at(-1),adjustment:'all',aligned:true,historyDays:365,droppedRows:Object.fromEntries(symbols.map(s=>[s,maps[s].size-dates.length]))};
+}
 export default async function handler(req,res){
- res.setHeader('Content-Type','application/json');
+ res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');
  const symbol=String(req.query?.symbol||'NVDA').toUpperCase();
  if(!stocks.some(s=>s.symbol===symbol))return res.status(400).json({error:'Unsupported ticker.'});
- const symbols=req.query?.basket==='1'?[...new Set([symbol,...BASKET])]:[symbol];
- const key=process.env.TWELVE_DATA_API_KEY,cacheKey=symbols.join(',')+(key?'direct':'shared');
- const hit=cache.get(cacheKey);if(hit&&hit.until>Date.now())return res.json(hit.data);
+ const key=process.env.MARKETSTACK_API_KEY;
+ if(!key)return res.status(503).json({code:'provider-not-configured',error:errors['provider-not-configured']});
+ const symbols=req.query?.basket==='1'?[...new Set([...BASKET,symbol])].sort():[symbol],cacheKey=symbols.join(',');
  try{
-  const dataset={};
-  for(const ticker of symbols){
-   let rows;
-   if(key){
-    const url=new URL('https://api.twelvedata.com/time_series');
-    Object.entries({symbol:ticker,interval:'1day',outputsize:'1500',order:'ASC',adjust:'all',apikey:key}).forEach(([k,v])=>url.searchParams.set(k,v));
-    const response=await fetch(url,{signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error();
-    const data=await response.json();if(!Array.isArray(data.values))throw Error();
-    const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-    rows=data.values.map(r=>({date:r.datetime,open:+r.open,high:+r.high,low:+r.low,close:+r.close,volume:+r.volume})).filter(r=>r.date<today).sort((a,b)=>a.date.localeCompare(b.date));
-   }else{
-    const response=await fetch('https://markets.secondorder.tools/api/market?symbol='+encodeURIComponent(ticker),{signal:AbortSignal.timeout(15000)});
-    if(!response.ok)throw Error();const data=await response.json();
-    if(data.source!=='twelve-data')return res.status(503).json({code:'provider-not-configured',error:'The shared Twelve Data connection is not configured or unavailable. Import an OHLCV CSV, or configure TWELVE_DATA_API_KEY on this project. No sample data was imported.'});
-    if(data.symbol!==ticker)throw Error();rows=data.rows;
-   }
-   dataset[ticker]=rows;
+  let data=cache.get(cacheKey);if(!data||data.until<Date.now()){
+   let request=pending.get(cacheKey);
+   if(!request){request=load(symbols,key);pending.set(cacheKey,request);}
+   try{const result=await request;data={until:Date.now()+900000,result};cache.set(cacheKey,data);}finally{if(pending.get(cacheKey)===request)pending.delete(cacheKey);}
   }
-  validateDataset(dataset);
-  if(symbols.length>1){const dates=dataset[symbol].map(r=>r.date);if(symbols.some(s=>dataset[s].length!==dates.length||dataset[s].some((r,i)=>r.date!==dates[i])))return res.status(422).json({code:'unaligned-basket',error:'Asset dates do not align. Import a CSV with identical trading dates for all assets.'});}
-  const result={symbol,rows:dataset[symbol],dataset,source:'twelve-data',connection:key?'direct':'shared-markets',asOf:dataset[symbol].at(-1).date,adjustment:key?'all':'provider-default'};
-  cache.set(cacheKey,{until:Date.now()+900000,data:result});return res.json(result);
- }catch{return res.status(502).json({code:'provider-unavailable',error:'Market history is unavailable or invalid. Your current dataset has been kept.'});}
+  return res.json({...data.result,symbol,rows:data.result.dataset[symbol]});
+ }catch(e){return res.status(e.status||502).json({code:errors[e.code]?e.code:'provider-unavailable',error:errors[e.code]||errors['provider-unavailable']});}
 }
