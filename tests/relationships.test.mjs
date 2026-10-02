@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {relationEmbedding,relationDistance,relationContributions,averageRanks,oasCorrelation,RELATION_CONFIG as C} from '../public/relationships.js';
+import {relationEmbedding,relationDistance,relationContributions,relationHasEvidence,averageRanks,oasCorrelation,RELATION_CONFIG as C} from '../public/relationships.js';
 import {makeEngine,tournament,eigen} from '../public/engine.js';
 import {sampleDataset} from '../public/data.js';
 const near=(a,b,t=1e-9)=>assert.ok(Math.abs(a-b)<t,`${a} != ${b}`);
@@ -96,4 +96,29 @@ import {forecastFixture} from '../scripts/relation-fixtures.mjs';
 test('known 12-asset rank-deficient window does not fail PSD validation',()=>{
  const dataset=forecastFixture(1117,'switching',1780,12),symbols=Object.keys(dataset).sort(),a=relationEmbedding(symbols.map(s=>dataset[s].slice(1770,1780)),symbols);assert.equal(a.available,true);assert.ok(a.vector.every(Number.isFinite));
  assert.ok(Math.min(...eigen(a.linear).values)>-1e-8);assert.ok(Math.min(...eigen(a.rank).values)>-1e-8);
+});
+
+
+test('fully shrunk query produces no relationship recommendations or consensus votes',()=>{
+ const r=makeEngine(fixture,'NVDA').find(470,499,['correlation','dtw']);
+ assert.equal(r.target.relationship.available,true);assert.equal(r.target.relationshipInformative,false);
+ assert.equal(r.target.correlation.model,'asset-relationships-v2');assert.deepEqual(r.active,['dtw']);assert.deepEqual(r.skipped,['correlation']);
+ assert.equal(r.rankings.correlation,undefined);assert.ok(r.analogues.length>0);assert.ok(r.analogues.every(c=>!c.votes.includes('correlation')));
+ const only=makeEngine(fixture,'NVDA').find(470,499,['correlation']);assert.deepEqual(only.active,[]);assert.deepEqual(only.analogues,[]);
+});
+test('informative query excludes fully shrunk historical candidates without disabling valid matches',()=>{
+ const e=makeEngine(fixture,'NVDA'),r=e.find(400,429,['correlation']);
+ assert.equal(r.target.relationshipInformative,true);assert.ok(r.active.includes('correlation'));assert.ok(r.rankings.correlation.length>0);
+ assert.ok(r.methodCandidateCount.correlation<r.candidateCount);
+ assert.ok(r.rankings.correlation.every(c=>e.get(c.start,c.end).relationshipInformative));
+ let eligible=0;for(let end=29;end+60<400;end+=5)if(e.get(end-29,end).relationshipInformative)eligible++;
+ assert.equal(r.methodCandidateCount.correlation,eligible);
+});
+
+test('evidence eligibility follows active channel weights and preserves old diagnostics explicitly',()=>{
+ const base={available:true,ablation:null,shrinkage:{linear:1,rank:.5}};
+ assert.equal(relationHasEvidence(base),true);assert.equal(relationHasEvidence({...base,ablation:'linear-only'}),false);
+ assert.equal(relationHasEvidence({...base,available:false}),false);assert.equal(relationHasEvidence({...base,shrinkage:{linear:.5,rank:1}}),true);
+ assert.throws(()=>makeEngine(fixture,'NVDA',{relationEvidence:'unknown'}));
+ const legacy=makeEngine(fixture,'NVDA',{relationEvidence:'legacy'}).find(470,499,['correlation']);assert.ok(legacy.rankings.correlation.some(c=>c.scores.correlation===0));
 });

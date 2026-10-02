@@ -61,3 +61,5 @@ export function relationContributions(a,b){
  return {distance:Math.sqrt(squared.linear+squared.rank),squared};
 }
 export const relationDistance=(a,b)=>relationContributions(a,b).distance;
+
+export function relationHasEvidence(x){return !!(x?.available===true&&x.shrinkage&&(x.shrinkage.linear<1||(x.ablation!=='linear-only'&&x.shrinkage.rank<1)));}

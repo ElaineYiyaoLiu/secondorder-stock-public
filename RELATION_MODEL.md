@@ -125,3 +125,10 @@ Geometry 页面显示新模型的稳健收缩线性相关和两个通道的收�
 ## 方法来源
 
 OAS 的原始方法：Chen, Wiesel, Eldar and Hero, *Shrinkage Algorithms for MMSE Covariance Estimation*, https://arxiv.org/abs/0907.4698 。有限维 `2/p` 项与常见大维度实现的区别可参见官方说明：https://scikit-learn.org/stable/modules/generated/sklearn.covariance.OAS.html 。稳健处理、两通道组合、资产身份要求、拒绝常数窗口和所有固定常数是本项目的设计选择，不是上述论文验证过的金融模型。
+
+
+## v0.13 result eligibility
+
+完全收缩的表示仍保留在诊断里，其数学距离仍可为零；当所有实际使用的关系通道完全收缩时，`relationshipInformative=false`。检索不接受该查询或历史候选，不生成关系推荐，不计入一致性投票；Lab 同样跳过该方法在该起点的预测。线性与排名中至少一个使用中的通道未完全收缩，才允许参与检索。旧有验证报告描述此前的检索规则，不能作为这一筛选规则的效果证据。
+
+历史快照测试显式使用 `relationEvidence: legacy` 复现旧版；网站默认使用 required 筛选规则，表示向量和距离公式保持不变。
