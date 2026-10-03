@@ -1,7 +1,11 @@
 import {demoCandles,stocks} from './market.js';
 export const BASKET=['NVDA','AAPL','MSFT','AMZN','META','SPY','QQQ','TSLA'];
 export function sampleDataset(symbol='NVDA'){return Object.fromEntries([...new Set([...BASKET,symbol])].map(s=>[s,demoCandles(s)]));}
-export function validCandle(r){return /^\d{4}-\d{2}-\d{2}$/.test(r.date)&&new Date(r.date+'T12:00:00Z').toISOString().slice(0,10)===r.date&&[r.open,r.high,r.low,r.close,r.volume].every(Number.isFinite)&&r.low>0&&r.volume>=0&&r.low<=Math.min(r.open,r.close)&&r.high>=Math.max(r.open,r.close);}
+export function validCandle(r){
+ if(!r||typeof r.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(r.date))return false;
+ const date=new Date(r.date+'T12:00:00Z');
+ return Number.isFinite(date.getTime())&&date.toISOString().slice(0,10)===r.date&&[r.open,r.high,r.low,r.close,r.volume].every(Number.isFinite)&&r.low>0&&r.volume>=0&&r.low<=Math.min(r.open,r.close)&&r.high>=Math.max(r.open,r.close);
+}
 export function validateDataset(dataset){
  const symbols=Object.keys(dataset);if(!symbols.length||symbols.length>12)throw Error('Provide 1–12 symbols.');
  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());

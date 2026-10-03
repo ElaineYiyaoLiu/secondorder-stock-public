@@ -1,6 +1,6 @@
 This is SecondOrder Stock, a bilingual workspace for understanding a selected market period and comparing historical basket structure through Homology.
 
-Current version: **v0.15**.
+Current version: **v0.16**.
 
 Seven models describe current conditions: daily candles, price path, labelled asset relationships, equal-weight basket risk, return distribution, multiscale state and price-volume order. Homology is the eighth model and the only historical analogue search. Models have separate evidence checks. There is no agreement vote or combined directional score.
 
@@ -19,7 +19,7 @@ The Marketstack v2 endpoint `/api/history?symbol=NVDA&basket=1&years=3` supports
 
 ## Models and evidence
 
-See [MODELS_V015.md](MODELS_V015.md) for definitions, diagnostic thresholds and limits. Model documentation from v0.2–v0.14 and `research/*` reports describe earlier retrieval designs. They are retained as historical research, not evidence for the new current-analysis tasks.
+See [MODELS_V016.md](MODELS_V016.md) and the original task definitions in [MODELS_V015.md](MODELS_V015.md) for definitions, diagnostic thresholds and limits. Model documentation from v0.2–v0.14 and `research/*` reports describe earlier retrieval designs. They are retained as historical research, not evidence for the new current-analysis tasks.
 
 Node 22 or later; no third-party runtime dependencies. Calculations run in a module Web Worker.
 
@@ -29,8 +29,8 @@ npm test
 npm run build
 ```
 
-`tests/current-analysis.test.mjs` and `tests/current-worker.test.mjs` cover the production model roles, known numerical examples, data coverage, separate horizon maturity, dispatch and future isolation. Existing numerical and retrieval tests explicitly use `public/legacy-engine.js`; the legacy engine, worker and evidence layer are excluded from the production build. Existing `validate:*` scripts reproduce historical research and continue to use that archived engine.
+`tests/model-audit.test.mjs`, `tests/current-analysis.test.mjs` and `tests/current-worker.test.mjs` cover the production model roles, known numerical examples, data coverage, separate horizon maturity, dispatch and future isolation. Existing numerical and retrieval tests explicitly use `public/legacy-engine.js`; the legacy engine, worker and evidence layer are excluded from the production build. Existing `validate:*` scripts reproduce historical research and continue to use that archived engine.
 
 ## Release
 
-Development: `secondorder-stock-private / v0.15`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
+Development: `secondorder-stock-private / v0.16`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.

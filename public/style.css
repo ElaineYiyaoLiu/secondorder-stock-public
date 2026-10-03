@@ -35,3 +35,6 @@ html[lang=zh-CN] h1,html[lang=zh-CN] h2{letter-spacing:0;line-height:1.4}
 #structure-content{grid-template-columns:1fr 1fr}#basket-label{font-size:12px;overflow-wrap:anywhere;max-width:65%}.query-panel .geometry-toggles{gap:7px}.analysis-layout{margin-bottom:24px}.geometry-card details p{margin-bottom:5px}
 @media(max-width:1000px){.analysis-metrics{gap:7px}.analysis-metrics dd{font-size:16px}}
 @media(max-width:680px){#analysis-cards{grid-template-columns:1fr}.analysis-metrics dd{font-size:18px}.geometry-card .observation{min-height:0}#structure-content{grid-template-columns:1fr}.watch-bottom .history-range{display:flex;align-items:center;gap:8px}.version{display:block}.horizon-controls{flex-wrap:wrap}.horizon-controls span{flex-basis:100%}}
+
+/* Keep narrow sidebar controls inside their grid column. */
+.watch,.watch-bottom,.history-range{min-width:0}.watch p{overflow-wrap:anywhere}.watch input,.watch select,.watch-bottom>button{max-width:100%;min-width:0}.history-range select{width:100%}.geometry-card td{white-space:normal}

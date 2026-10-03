@@ -56,7 +56,7 @@ test('missing and flat baskets explain why Homology is unavailable',()=>{
  const rows=fixture(Array(60).fill(100));const a=makeEngine({NVDA:rows},'NVDA').homology(30,59);assert.equal(a.evidence.code,'insufficient');assert.equal(a.cohorts.length,0);const b=makeEngine({NVDA:rows,AAPL:rows,MSFT:rows},'NVDA').homology(30,59);assert.equal(b.evidence.code,'insufficient');assert.match(b.evidence.en,/variation/);
 });
 test('short prior history supports 5D retrieval even when 60D has no eligible candidates',()=>{
- const e=makeEngine(sampleDataset(),'NVDA'),r=e.homology(60,89);assert.ok(r.cohorts[0].eligibleCount>0);assert.equal(r.cohorts[2].eligibleCount,0);assert.equal(r.cohorts[2].outcome.n,0);assert.equal(r.cohorts[2].outcome.mean,null);assert.equal(r.cohorts[2].evidence.code,'limited');
+ const e=makeEngine(sampleDataset(),'NVDA'),r=e.homology(60,89);assert.ok(r.cohorts[0].eligibleCount>0);assert.equal(r.cohorts[2].eligibleCount,0);assert.equal(r.cohorts[2].outcome.n,0);assert.equal(r.cohorts[2].outcome.mean,null);assert.equal(r.cohorts[2].evidence.code,'insufficient');
 });
 test('per-model evidence does not require history or votes',()=>{
  const a=makeEngine(sampleDataset(),'NVDA').analyze(0,29,['dtw']);const g={id:'dtw'};assert.equal(geometryEvidence(g,a).code,'observed');assert.equal(geometryEvidence({id:'signature'},a).code,'not-run');

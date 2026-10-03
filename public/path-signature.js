@@ -27,7 +27,7 @@ export function signatureEmbedding(rows,{ablation=null}={}){
  const anchors=[Math.log1p(realized/.01),Math.log1p(volumeVariation),zeroVolumeCount/n],vector=[];
  for(let i=0;i<7;i++){const count=i===0?1:i<3?2:4,weight=ablation==='global-only'?(i===0?1:0):count===1?.4:count===2?.35:.25;for(let j=0;j<10;j++)vector.push(Math.asinh(blocks[i][j])*Math.sqrt(.85*weight/count*.5/(j<4?4:6)));}
  for(const x of anchors)vector.push(x*Math.sqrt(.15/3));
- return {model:SIGNATURE_MODEL,n,ablation,blocks,anchors,vector,summary:{realized,volumeVariation,zeroVolumeCount,globalTimePriceArea:blocks[0][4],globalPriceVolumeArea:blocks[0][7]}};
+ return {model:SIGNATURE_MODEL,n,ablation,points,blocks,anchors,vector,summary:{realized,volumeVariation,zeroVolumeCount,globalTimePriceArea:blocks[0][4],globalPriceVolumeArea:blocks[0][7]}};
 }
 function validate(a){if(!a||a.model!==SIGNATURE_MODEL||!Number.isInteger(a.n)||a.n<10||a.n>120||!variants.includes(a.ablation)||!Array.isArray(a.vector)||a.vector.length!==73||Array.from(a.vector).some(x=>!Number.isFinite(x)||Math.abs(x)>1e4))throw Error('Invalid signature representation.');}
 export function signatureComparison(a,b){
@@ -36,3 +36,4 @@ export function signatureComparison(a,b){
  return {distance:Math.hypot(...a.vector.map((x,i)=>x-b.vector[i])),squared};
 }
 export const signatureDistance=(a,b)=>signatureComparison(a,b).distance;
+
