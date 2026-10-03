@@ -32,3 +32,9 @@ The generated JSON keeps a visible download link for retry. Blob URLs are revoke
 ## Release verification
 
 Full unit/property regression, production Worker dispatch, serialization across 10/19/20/29/30/50/60/119/120-session windows, future isolation, production build, secret scan and live bilingual/current/Homology/validation checks are required. Private v0.16 preserves v0.15 and earlier branches; Public retains main; production is verified against the Public commit and the embedded main entry.
+
+### Measured release checks (2026-10-03)
+
+199 automated tests passed. The 12-asset, 120-session current-analysis plus Homology stress flow completed in approximately 414 ms locally. Live Marketstack returned 8 aligned assets and 745 bars from 2023-10-03 through 2026-10-02, explicitly unadjusted. Live current analysis, English/Chinese switching, Homology set retention and the walk-forward Lab ran successfully. The real-data Lab scored 5 of 28 origins and abstained on 23; MAE was 24.533 percentage points versus 13.356 for the past baseline. These five origins support no reliable forecasting conclusion.
+
+The generated JSON payload, retryable Blob URL lifecycle and provider-provenance reset were tested against the actual export handler. The automation browser did not capture completion of either JSON or ordinary CSV-template downloads; download completion remains unverified in that browser. The live prepared-download link was visibly present.
