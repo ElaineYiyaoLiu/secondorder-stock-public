@@ -21,18 +21,25 @@ const equities = [
 ['LMT','Lockheed Martin','洛克希德马丁'],['UPS','United Parcel Service','联合包裹'],['FDX','FedEx','联邦快递'],['NEE','NextEra Energy','新纪元能源'],['PLD','Prologis','普洛斯'],
 ];
 export const stocks = [...equities.slice(0,6),['SPY','SPDR S&P 500 ETF','标普 500 ETF'],['QQQ','Invesco QQQ ETF','纳斯达克 100 ETF'],...equities.slice(6)].map(([symbol,name,zh])=>({symbol,name,zh}));
-export function demoCandles(symbol) {
+export function demoCandles(symbol, count=500) {
   const index=stocks.findIndex(s=>s.symbol===symbol);
   let seed=173+index*41; const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
   const bases=[132,208,268,423,183,571,562,482]; const vols=[140e6,48e6,87e6,23e6,37e6,17e6,49e6,32e6];
   let price=bases[index]??(50+(index*37)%450); const out=[];
-  for(let d=new Date('2023-07-03T12:00:00Z');d<=new Date('2025-06-30T12:00:00Z');d.setUTCDate(d.getUTCDate()+1)) {
+  for(let d=new Date('2023-07-03T12:00:00Z');out.length<500;d.setUTCDate(d.getUTCDate()+1)) {
     if([0,6].includes(d.getUTCDay()) || ['2023-07-04','2023-09-04','2023-11-23','2023-12-25','2024-01-01','2024-01-15','2024-02-19','2024-03-29','2024-05-27','2024-06-19','2024-07-04','2024-09-02','2024-11-28','2024-12-25','2025-01-01','2025-01-09','2025-01-20','2025-02-17','2025-04-18','2025-05-26','2025-06-19'].includes(d.toISOString().slice(0,10)))continue;
     const i=out.length%126, open=price*(1+(random()-.5)*.014), drift=i<40?.0015:i<65?-.003:i<106?.0028:-.0007;
     const close=open*(1+drift+(random()-.5)*.031), high=Math.max(open,close)*(1+random()*.016),low=Math.min(open,close)*(1-random()*.014);
     out.push({date:d.toISOString().slice(0,10),open,high,low,close,volume:Math.round((vols[index]??(12+index%23)*1e6)*(.55+random()))});price=close;
   }
-  return out;
+  if(count<=500)return out.slice(0,count);
+  // Additional demo history goes before the fixture, never into future dates.
+  const dates=[],d=new Date(out[0].date+'T12:00:00Z');
+  while(dates.length<count-500){d.setUTCDate(d.getUTCDate()-1);if(![0,6].includes(d.getUTCDay()))dates.push(d.toISOString().slice(0,10));}
+  price=out[0].open;const prefix=dates.reverse().map((date,i)=>{const open=price*(1+(random()-.5)*.014),close=open*(1+.001*Math.sin(i/21)+(random()-.5)*.031),high=Math.max(open,close)*(1+random()*.016),low=Math.min(open,close)*(1-random()*.014);price=close;return {date,open,high,low,close,volume:Math.round((vols[index]??12e6)*(.55+random()))};});
+  const scale=out[0].open/prefix.at(-1).close;
+  prefix.forEach(r=>{for(const k of ['open','high','low','close'])r[k]*=scale;});
+  return [...prefix,...out];
 }
 
 export function candleTranslation(c, lang) {
@@ -45,4 +52,3 @@ export function candleTranslation(c, lang) {
   if(c.close>c.open)return lang==='zh'?(position>.75?'收盘比开盘高，而且接近当天最高价，涨幅大部分保留到了收盘。':'收盘比开盘高，但离当天最高价还有一段距离。'):(position>.75?'The price finished above the open and near the day’s high, holding on to most of its gains.':'The price finished above the open, though below the day’s high.');
   return lang==='zh'?(position<.25?'收盘比开盘低，而且接近当天最低价，到收盘时也没有明显回升。':'收盘比开盘低，不过已经从当天最低价有所回升。'):(position<.25?'The price finished below the open and near the day’s low, with little recovery by the close.':'The price finished below the open, but recovered some ground from the day’s low.');
 }
-

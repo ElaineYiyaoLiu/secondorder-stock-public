@@ -1,6 +1,6 @@
 import {demoCandles,stocks} from './market.js';
 export const BASKET=['NVDA','AAPL','MSFT','AMZN','META','SPY','QQQ','TSLA'];
-export function sampleDataset(symbol='NVDA'){return Object.fromEntries([...new Set([...BASKET,symbol])].map(s=>[s,demoCandles(s)]));}
+export function sampleDataset(symbol='NVDA',count=500){return Object.fromEntries([...new Set([...BASKET,symbol])].map(s=>[s,demoCandles(s,count)]));}
 export function validCandle(r){
  if(!r||typeof r.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(r.date))return false;
  const date=new Date(r.date+'T12:00:00Z');
@@ -26,5 +26,4 @@ export function parseCSV(text){
  return validateDataset(dataset);
 }
 export function instrument(symbol){return stocks.find(s=>s.symbol===symbol)||{symbol,name:symbol,zh:symbol};}
-
 
