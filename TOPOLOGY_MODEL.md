@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # 第六个几何：市场结构／拓扑 v2
 
 模型 ID `market-topology-v2`，开发版本 v0.7，基于 v0.6。其他七种几何在有效数据上的表示与检索排名通过 v0.6 固定散列回归。旧分支保留。
@@ -83,3 +85,4 @@ W₂ 不等同于 bottleneck 距离，不能直接套用后者维度无关的最
 ## 复现
 
 `npm test`；`npm run build`；`node scripts/topology-reference-fixture.mjs`；`python scripts/check-topology-reference.py`（NumPy/SciPy）；`npm run validate:topology`。
+

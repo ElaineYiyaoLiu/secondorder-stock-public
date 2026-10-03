@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {marketEmbedding,marketDistance,marketComparison,spdDistance,spdComparison,MARKET_MODEL} from '../public/market-state.js';
-import {makeEngine,tournament,GEOMETRIES} from '../public/engine.js';
+import {makeEngine,tournament,GEOMETRIES} from '../public/legacy-engine.js';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {sampleDataset} from '../public/data.js';
@@ -68,3 +68,4 @@ test('v0.4 snapshot remains reproducible with the legacy distribution diagnostic
 test('market walk-forward predictions remain past-only and variants validate',async()=>{
  const ds=sampleDataset(),a=await tournament(makeEngine(ds,'NVDA'),['riemannian']),bad=structuredClone(ds);for(const rows of Object.values(bad))for(const r of rows.slice(310))for(const key of ['open','high','low','close'])r[key]*=2;const b=await tournament(makeEngine(bad,'NVDA'),['riemannian']);assert.ok(a[0].n>0);assert.equal(a[0].records[0].prediction,b[0].records[0].prediction);assert.equal(a[0].records[0].base,b[0].records[0].base);assert.throws(()=>makeEngine(ds,'NVDA',{marketModel:'wrong'}));assert.throws(()=>makeEngine(ds,'NVDA',{marketModel:'legacy',marketAblation:'no-winsor'}));
 });
+

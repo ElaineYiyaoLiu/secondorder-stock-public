@@ -1,5 +1,5 @@
 import {writeFile} from 'node:fs/promises';
-import {makeEngine,tournament,mean,quantile} from '../public/engine.js';
+import {makeEngine,tournament,mean,quantile} from '../public/legacy-engine.js';
 import {marketEmbedding,MARKET_CONFIG,MARKET_MODEL} from '../public/market-state.js';
 import {estimationFixture,forecastFixture,fromReturns,generator} from './relation-fixtures.mjs';
 import {commonEvaluation} from './paired-evaluation.mjs';
@@ -30,3 +30,4 @@ const stress=[],dataset=forecastFixture(1117,'switching',3000,12);
 for(const length of [10,30,120]){const start=3000-length,engine=makeEngine(dataset,'S0'),t=performance.now(),r=engine.find(start,2999,['riemannian']);if(!r.rankings.riemannian?.length||r.rankings.riemannian.some(c=>!Number.isFinite(c.scores.riemannian)))throw Error('Stress search failed');stress.push({length,milliseconds:performance.now()-t,candidates:r.candidateCount,eligible:r.methodCandidateCount.riemannian,neighbours:r.rankings.riemannian.length});}
 const report={model:MARKET_MODEL,config:MARKET_CONFIG,estimation,forecast,stress,protocol:'Fixed constants before evaluation. 1200 six-asset Gaussian estimation windows with heterogeneous marginal variances; contaminated loss targets latent clean covariance. Forecast: 27 six-asset histories of 1000 sessions, four variants, 30-session query, 20-session horizon, stride 20, six nonoverlapping neighbours, fully mature candidates strictly before query start. All comparisons use shared date origins; exploratory 5000-resample seed-cluster bootstrap. Separate forecasting seeds share inherited generators and are not market validation.',limitations:['Winsorization and OAS spherical shrinkage are not affine-equivariant estimators.','OAS after clipping is a heuristic regularizer, not a Gaussian oracle guarantee.','A covariance state has no drift, time order or tail-distribution channel.','Spherical prior can erase heterogeneity or weak relationships; robust clipping can hide real crashes.','Synthetic results cannot establish market predictive advantage.','Minimum shrinkage and risk floors are fixed design choices, not fitted parameters.','Seed confidence intervals are exploratory and not multiple-comparison adjusted.']};
 await writeFile('research/market-validation.json',JSON.stringify(report,null,2)+'\n');console.log('Saved research/market-validation.json');
+

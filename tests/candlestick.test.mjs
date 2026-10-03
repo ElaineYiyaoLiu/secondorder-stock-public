@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {candleEmbedding,candleDistance,candleContributions,legacyCandle,CANDLE_WEIGHTS} from '../public/candlestick.js';
-import {makeEngine,tournament} from '../public/engine.js';
+import {makeEngine,tournament} from '../public/legacy-engine.js';
 import {sampleDataset} from '../public/data.js';
 const fixture=sampleDataset().NVDA.slice(0,30);
 const vec=rows=>candleEmbedding(rows).vector;
@@ -63,3 +63,4 @@ test('legacy diagnostic reproduces v0.1 arithmetic exactly',()=>{
  const v=fixture.reduce((s,r)=>s+r.volume,0)/fixture.length,base=fixture[0].close;
  assert.deepEqual(legacyCandle(fixture),fixture.flatMap(r=>[Math.log(r.open/base),Math.log(r.high/base),Math.log(r.low/base),Math.log(r.close/base),Math.log((r.volume+1)/(v+1))/10]));
 });
+

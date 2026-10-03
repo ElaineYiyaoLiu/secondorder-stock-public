@@ -1,5 +1,5 @@
 import {writeFile} from 'node:fs/promises';
-import {makeEngine,tournament,mean} from '../public/engine.js';
+import {makeEngine,tournament,mean} from '../public/legacy-engine.js';
 import {sampleDataset} from '../public/data.js';
 import {CANDLE_MODEL,CANDLE_WEIGHTS} from '../public/candlestick.js';
 function generate(seed,kind,n=1200){
@@ -32,3 +32,4 @@ const demo=[];for(const [symbol,rows] of Object.entries(sampleDataset())){
 const report={model:CANDLE_MODEL,weights:CANDLE_WEIGHTS,protocol:'Fixed weights, 30-session query, 20-session outcome, stride 20, six spaced neighbours, mature outcomes before query start. Development seeds and separate seed cohort, no tuning. Cohort averages are per-seed MAE; origins within each seed are dependent.',results,demo,limitations:['Synthetic processes only; no real market data or alpha evidence.','Held-out seeds share the same generators; this is not a held-out market regime.','No confidence intervals or claim of statistical significance.','Fixed weights and scale floor remain modeling assumptions.']};
 await writeFile('research/candle-validation.json',JSON.stringify(report,null,2)+'\n');
 console.log('Saved research/candle-validation.json');
+

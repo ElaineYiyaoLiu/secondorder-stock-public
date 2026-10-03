@@ -2,5 +2,7 @@ import {cp, mkdir, rm} from 'node:fs/promises';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
 await cp('public','dist',{recursive:true});
-console.log('SecondOrder Stock v0.14 built.');
+for(const file of ['legacy-engine.js','legacy-worker.js','legacy-evidence.js'])await rm('dist/'+file,{force:true});
+console.log('SecondOrder Stock v0.15 built.');
+
 

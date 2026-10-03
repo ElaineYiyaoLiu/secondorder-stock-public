@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # 第七个几何模型：多分辨率层级状态（v0.8）
 
 模型标识：`hierarchical-state-v2`。目标是更细致、可解释地比较同样长度的历史窗口，而不是证明未来收益可预测。
@@ -71,3 +73,4 @@ npm run build
 ```
 
 独立核验需要 NumPy。结果保存在 `research/hierarchy-reference-check.json` 与 `research/hierarchy-validation.json`。原始参考输入可由脚本重建。
+

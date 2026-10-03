@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # Price path geometry v2
 
 SecondOrder Stock v0.3 keeps the candle geometry introduced in v0.2 and replaces the second geometry with `price-path-dtw-v2`. Historical versions stay unchanged. This is a close-path representation and similarity function for analogue retrieval, not a trained return predictor.
@@ -101,3 +103,4 @@ MAE in return percentage points on the separate-seed cohort, at common origins:
 新版在这三个种子组中都略差于旧版，也没有超过简单基准。三个配对差值的种子 bootstrap 区间都跨过零，不能据此认定新版或旧版有稳定优势。开发组的重复漂移过程中，新版更差，探索性区间为 [0.026, 0.411] 个百分点。无时间拉伸的消融版本在三个独立种子组中都略优于完整版本，说明当前增加的对齐自由度尚未提供可确认的收益预测价值；不能据此再用同一组结果调参。
 
 工程上，已通过 39 项测试，包含独立穷举核对与 500 组随机路径检查。表示更明确、时间变形更受约束，不等于预测更有效。保留完整结果，下一阶段需要未参与设计的真实复权数据，而不是继续把这些合成结果调到好看。
+

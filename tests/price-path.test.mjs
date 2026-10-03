@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pathEmbedding,pathDistance,pathComparison,PATH_CONFIG as C} from '../public/price-path.js';
-import {makeEngine,tournament,distance,state} from '../public/engine.js';
+import {makeEngine,tournament,distance,state} from '../public/legacy-engine.js';
 import {sampleDataset} from '../public/data.js';
 const near=(a,b,t=1e-9)=>assert.ok(Math.abs(a-b)<t,`${a} != ${b}`);
 const rows=(values)=>values.map(close=>({close}));
@@ -95,3 +95,4 @@ test('ablation options are restricted and defaults are deterministic',()=>{
  const a=makeEngine(ds,'NVDA').find(400,429,['dtw']);assert.deepEqual(a,makeEngine(ds,'NVDA').find(400,429,['dtw']));
  for(const pathAblation of ['no-warp','no-slope','no-regime'])assert.ok(makeEngine(ds,'NVDA',{pathAblation}).find(400,429,['dtw']).analogues.length>0);
 });
+

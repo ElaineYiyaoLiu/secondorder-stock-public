@@ -1,5 +1,5 @@
 import {writeFile} from 'node:fs/promises';
-import {makeEngine,tournament,mean,quantile} from '../public/engine.js';
+import {makeEngine,tournament,mean,quantile} from '../public/legacy-engine.js';
 import {relationEmbedding,RELATION_CONFIG,RELATION_MODEL} from '../public/relationships.js';
 import {estimationFixture,forecastFixture} from './relation-fixtures.mjs';
 import {commonEvaluation} from './paired-evaluation.mjs';
@@ -33,3 +33,4 @@ for(const symbol of Object.keys(dataset)){
 }
 const report={model:RELATION_MODEL,config:RELATION_CONFIG,estimation,forecast,demo,protocol:'Constants fixed before evaluation. Estimation: 100 seeds per generator/window, six assets, known Gaussian factor structure; contamination estimates the latent clean correlation, not the contaminated population. Forecast: 72 six-asset histories, 1200 sessions, 30-session query, 20-session horizon, stride 20, six spaced neighbours, mature outcomes before query start. Separate-seed cohort includes three ablations; common date intersection and coverage are retained. Paired intervals use 5000 seed-cluster bootstrap resamples.',limitations:['Synthetic estimation and prediction only; no market alpha evidence.','OAS is applied after winsorization and ranking; no Gaussian oracle guarantee is claimed.','Full shrinkage expresses a prior under weak evidence, not proof of independence.','The linked-drift process deliberately embeds predictable relationship states.','Separate seeds share the same generators; they are not unseen market regimes.','Bootstrap intervals are exploratory, not adjusted for multiple comparisons.','Outlier suppression may hide genuine systemic shocks; latent-state loss is only one target.']};
 await writeFile('research/relationship-validation.json',JSON.stringify(report,null,2)+'\n');console.log('Saved research/relationship-validation.json');
+

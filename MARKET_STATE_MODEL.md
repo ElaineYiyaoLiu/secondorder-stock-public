@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # 第四个几何：市场状态 v2
 
 模型 ID：`market-state-spd-v2`。开发版本 v0.5，基于 v0.4。其余七个几何的有效窗口表示和样本检索排名经过固定 v0.4 散列回归，未改变。
@@ -93,3 +95,4 @@ OAS 来源：Chen, Wiesel, Eldar, Hero, [Shrinkage Algorithms for MMSE Covarianc
 ## 复现
 
 `npm test`；`npm run build`；`node scripts/market-reference-fixture.mjs`；`python scripts/check-market-reference.py`（NumPy）；`npm run validate:market`。查询与 Lab 可在网页使用第四项 Market state / 市场状态。
+

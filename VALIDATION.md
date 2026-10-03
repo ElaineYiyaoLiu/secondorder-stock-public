@@ -1,3 +1,5 @@
+> Historical validation records through v0.14. New production-role checks are described in MODELS_V015.md and tests/current-*.test.mjs.
+
 # v0.9 development validation, 2026-10-01
 
 Geometry 8 is `path-order-signature-v2`. 120 automated tests pass, including 500 Chen composition cases, 500 metric triples, time and local order collision examples, extreme-input validation, future isolation, Worker dispatch and exact v0.8 snapshots for the seven other geometries. Independent Python/NumPy degree-2 tensor signatures match 200 raw paths and 720 window states, with maximum final vector error 2.98e-14. Stress checks cover 10/30/120-day queries over 3,000 sessions. The synthetic linked-drift process worsened versus the legacy signature; no predictive advantage is established. Browser visual/export/threading and live-provider QA remain unverified. See `SIGNATURE_MODEL.md` and the two `research/signature-*.json` reports. This is a version-branch preview; production remains v0.1.
@@ -112,4 +114,5 @@ Online verification on 2026-10-01:
 - No application-script errors were observed during these flows. Browser extension metadata errors were excluded.
 - Mobile viewport, CSV file chooser/upload and export download QA remain unverified. No production claims about real-market prediction are made.
 - Existing SecondOrder sites were not modified. No public repository was created.
+
 

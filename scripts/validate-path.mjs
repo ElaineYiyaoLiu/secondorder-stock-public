@@ -1,5 +1,5 @@
 import {writeFile} from 'node:fs/promises';
-import {makeEngine,tournament,mean,quantile} from '../public/engine.js';
+import {makeEngine,tournament,mean,quantile} from '../public/legacy-engine.js';
 import {sampleDataset} from '../public/data.js';
 import {commonEvaluation} from './paired-evaluation.mjs';
 import {PATH_MODEL,PATH_CONFIG} from '../public/price-path.js';
@@ -46,3 +46,4 @@ const demo=[];for(const [symbol,rows] of Object.entries(sampleDataset())){
 const report={model:PATH_MODEL,config:PATH_CONFIG,protocol:'Fixed design before outcomes; 30-session query, 20-session outcome, stride 20, six spaced neighbours, mature outcomes before query start. Same generators and seeds as candle validation. Held-out seed cohort additionally tests three ablations. 5,000 paired seed-cluster bootstrap resamples per cohort; all origins of a seed remain together. Metrics use the intersection of scored dates across compared methods, with model-specific coverage reported. No outcome-based tuning.',results,demo,limitations:['Synthetic processes only, no real-market data or alpha evidence.','Seeds were used previously in candle validation; they are separate from path development checks, not a never-seen dataset.','Seed cohorts share generators, so they do not represent held-out market regimes.','Bootstrap intervals are exploratory with 12 independent seeds per group; no multiple-comparison adjustment.','Fixed constants are modeling assumptions; results must not be used to tune against this evaluation set.']};
 await writeFile('research/path-validation.json',JSON.stringify(report,null,2)+'\n');
 console.log('Saved research/path-validation.json');
+

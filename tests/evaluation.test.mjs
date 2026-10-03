@@ -9,7 +9,7 @@ test('comparison uses common dates, preserves coverage and pairs reordered recor
 test('comparison rejects missing pairs, duplicate dates and unequal actuals or baselines',()=>{
  for(const methods of [{},{a:[record('a',1)],b:[record('b',1)]},{a:[record('a',1),record('a',1)]},{a:[record('a',1)],b:[record('a',2)]},{a:[record('a',1)],b:[{...record('a',1),base:2}]},{a:[record('a',NaN)]}])assert.throws(()=>commonEvaluation(methods));
 });
-import {tournament} from '../public/engine.js';
+import {tournament} from '../public/legacy-engine.js';
 test('browser Lab compares all enabled methods at common origins and removes duplicate IDs',async()=>{
  const rows=Array.from({length:321},(_,i)=>({date:String(i),close:100+i})),c=[{end:29},{end:79},{end:129}];
  const engine={rows,find(start,end,ids){return {active:ids,rankings:{dtw:end===280?c.slice(0,2):c,euclidean:end===260?c.slice(0,2):c}};}};
@@ -22,3 +22,4 @@ test('unavailable basket geometry does not remove single-symbol Lab origins',asy
  const r=await tournament(engine,['dtw','topology']);assert.equal(r[0].n,3);assert.equal(r[1].n,0);
  assert.deepEqual(r[0].excludedOrigins,[]);await assert.rejects(()=>tournament(engine,['unknown']));
 });
+

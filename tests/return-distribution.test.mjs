@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {distributionEmbedding,distributionComparison,distributionDistance,empiricalW1,DISTRIBUTION_MODEL} from '../public/return-distribution.js';
-import {makeEngine,tournament,GEOMETRIES} from '../public/engine.js';
+import {makeEngine,tournament,GEOMETRIES} from '../public/legacy-engine.js';
 import {sampleDataset} from '../public/data.js';
 import {fromReturns,generator} from '../scripts/relation-fixtures.mjs';
 const close=(a,b,t=1e-10)=>assert.ok(Math.abs(a-b)<t,`${a} vs ${b}`);
@@ -59,3 +59,4 @@ test('legacy diagnostic matches raw sorted-return arithmetic and default variant
 test('walk-forward predictions remain past-only after future observations change',async()=>{
  const ds=sampleDataset(),a=await tournament(makeEngine(ds,'NVDA'),['wasserstein']),bad=structuredClone(ds);for(const xs of Object.values(bad))for(const x of xs.slice(310))for(const k of ['open','high','low','close'])x[k]*=2;const b=await tournament(makeEngine(bad,'NVDA'),['wasserstein']);assert.equal(a[0].records[0].prediction,b[0].records[0].prediction);assert.equal(a[0].records[0].base,b[0].records[0].base);
 });
+

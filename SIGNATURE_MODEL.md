@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # 第八个几何模型：多尺度时间增强路径顺序（v0.9）
 
 模型标识：`path-order-signature-v2`。目标是更完整地描述价格与成交量路径的顺序关系，比较同样长度的历史窗口。它仍是实验性相似检索，不是已验证的投资预测器。
@@ -90,3 +92,4 @@ npm run build
 ```
 
 独立核验需要 NumPy。结果：`research/signature-reference-check.json`、`research/signature-validation.json`。原始参考输入由脚本重建。
+

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {relationEmbedding,relationDistance,relationContributions,relationHasEvidence,averageRanks,oasCorrelation,RELATION_CONFIG as C} from '../public/relationships.js';
-import {makeEngine,tournament,eigen} from '../public/engine.js';
+import {makeEngine,tournament,eigen} from '../public/legacy-engine.js';
 import {sampleDataset} from '../public/data.js';
 const near=(a,b,t=1e-9)=>assert.ok(Math.abs(a-b)<t,`${a} != ${b}`);
 const fixture=sampleDataset(),names=['AMZN','MSFT','NVDA'],basket=names.map(s=>fixture[s].slice(0,30));
@@ -122,3 +122,4 @@ test('evidence eligibility follows active channel weights and preserves old diag
  assert.throws(()=>makeEngine(fixture,'NVDA',{relationEvidence:'unknown'}));
  const legacy=makeEngine(fixture,'NVDA',{relationEvidence:'legacy'}).find(470,499,['correlation']);assert.ok(legacy.rankings.correlation.some(c=>c.scores.correlation===0));
 });
+

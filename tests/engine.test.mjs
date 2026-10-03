@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {dtw,spdDistance,persistence,prefixDistance,signature,makeEngine,GEOMETRIES,outcomes,tournament} from '../public/engine.js';
+import {dtw,spdDistance,persistence,prefixDistance,signature,makeEngine,GEOMETRIES,outcomes,tournament} from '../public/legacy-engine.js';
 import {sampleDataset,parseCSV} from '../public/data.js';
 const close=(a,b,tol=1e-7)=>assert.ok(Math.abs(a-b)<tol,`${a} vs ${b}`);
 test('SPD distance matches diagonal formula, symmetry, and congruence invariance',()=>{
@@ -32,4 +32,5 @@ test('CSV accepts complete histories and rejects duplicate dates and invalid OHL
 test('Walk-forward predictions at an origin are unchanged by later observations',async()=>{
  const ds=sampleDataset(),one=await tournament(makeEngine(ds,'NVDA'),['dtw']);const changed=structuredClone(ds);for(const r of changed.NVDA.slice(310)){for(const field of ['open','high','low','close'])r[field]*=1.3;r.volume*=2;}const two=await tournament(makeEngine(changed,'NVDA'),['dtw']);assert.ok(one[0].n>0);assert.equal(one[0].records[0].prediction,two[0].records[0].prediction);assert.equal(one[0].records[0].base,two[0].records[0].base);
 });
+
 

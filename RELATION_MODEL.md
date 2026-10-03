@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # Asset relationships v2
 
 第三个几何现在比较同一组资产在一个窗口里的共同变化方式。它不预测单只股票收益，也不把整个市场等同于这组小资产篮子。SecondOrder Stock v0.4 保留前两个几何的改进，并将第三个几何替换为 `asset-relationships-v2`。
@@ -132,3 +134,4 @@ OAS 的原始方法：Chen, Wiesel, Eldar and Hero, *Shrinkage Algorithms for MM
 完全收缩的表示仍保留在诊断里，其数学距离仍可为零；当所有实际使用的关系通道完全收缩时，`relationshipInformative=false`。检索不接受该查询或历史候选，不生成关系推荐，不计入一致性投票；Lab 同样跳过该方法在该起点的预测。线性与排名中至少一个使用中的通道未完全收缩，才允许参与检索。旧有验证报告描述此前的检索规则，不能作为这一筛选规则的效果证据。
 
 历史快照测试显式使用 `relationEvidence: legacy` 复现旧版；网站默认使用 required 筛选规则，表示向量和距离公式保持不变。
+

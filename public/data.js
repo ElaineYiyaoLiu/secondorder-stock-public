@@ -7,7 +7,7 @@ export function validateDataset(dataset){
  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
  for(const symbol of symbols){
   if(!/^[A-Z0-9.^-]{1,16}$/.test(symbol))throw Error('Invalid ticker.');
-  const rows=dataset[symbol];if(!Array.isArray(rows)||rows.length<180||rows.length>3000)throw Error('Provide 180–3000 completed daily bars per symbol.');
+  const rows=dataset[symbol];if(!Array.isArray(rows)||rows.length<10||rows.length>3000)throw Error('Provide 10–3000 completed daily bars per symbol.');
   rows.forEach((r,i)=>{if(!validCandle(r)||r.date>=today||(i&&r.date<=rows[i-1].date))throw Error('Check dates, OHLC, volume, duplicate rows, and sorting.');});
  }
  return dataset;
@@ -22,4 +22,5 @@ export function parseCSV(text){
  return validateDataset(dataset);
 }
 export function instrument(symbol){return stocks.find(s=>s.symbol===symbol)||{symbol,name:symbol,zh:symbol};}
+
 

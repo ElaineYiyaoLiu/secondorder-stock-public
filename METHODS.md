@@ -1,3 +1,5 @@
+> Archived v0.14 retrieval methods. See MODELS_V015.md for the current implementation.
+
 ## Representations
 
 | Method | Implementation | Boundary |
@@ -39,3 +41,4 @@ The original Project 04 Python script remains available for its separate larger-
 See [HIERARCHY_MODEL.md](HIERARCHY_MODEL.md) for geometry 7 equations, independent verification, collision diagnostics and negative synthetic forecasting results.
 
 See [SIGNATURE_MODEL.md](SIGNATURE_MODEL.md) for geometry 8 equations, independent tensor verification, order-collision examples and negative synthetic forecasting results.
+

@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # Candlestick / Euclidean v2
 
 第一个几何仍然回答：两段等长历史窗口，在 K 线、走势和成交量结构上有多相似？它没有单独的收益预测器。后续预测仍由历史邻居的结果均值产生。
@@ -71,3 +73,4 @@ See research/candle-validation.json for every seed and demo symbol. MAE is in pe
 新版在这三个独立种子组的平均误差都略低于旧版，但都没有超过简单基准。开发种子组的重复漂移过程中新版略差。八个原有合成股票样本里，新版赢五个、输三个，NVDA 的 MAE 从 4.025 升到 4.646。因此可以说表示和边界处理更完整，不能说预测能力已经改善。没有统计显著性检验，也没有真实股票数据验证。
 
 下一步应在未用于设计的真实复权 OHLCV 上做时间顺序验证，检查邻居稳定性、分组消融、参数敏感性及分市场状态的表现。只有训练时段可用于权重选择，测试时段必须保留，并与旧版、无条件均值和零收益基准比较。
+

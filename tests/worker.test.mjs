@@ -4,7 +4,7 @@ import {sampleDataset} from '../public/data.js';
 test('worker search and Lab return serializable v2 results; invalid requests report errors',async()=>{
  const messages=[];globalThis.self={postMessage:m=>messages.push(structuredClone(m))};
  try{
-  await import('../public/worker.js');const dataset=sampleDataset();
+  await import('../public/legacy-worker.js');const dataset=sampleDataset();
   await self.onmessage({data:{dataset,symbol:'NVDA',ids:['euclidean','dtw','correlation','riemannian','wasserstein','topology','ultrametric','signature'],start:470,end:499}});
   assert.equal(messages.at(-1).type,'result');assert.equal(messages.at(-1).result.target.candle.model,'candle-euclidean-v2');
   assert.ok(messages.at(-1).result.rankings.euclidean.length>0);
@@ -31,3 +31,4 @@ test('worker search and Lab return serializable v2 results; invalid requests rep
   assert.equal(messages.at(-1).type,'error');
  }finally{delete globalThis.self;}
 });
+

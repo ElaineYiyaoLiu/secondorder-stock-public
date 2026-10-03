@@ -1,3 +1,5 @@
+> Historical retrieval design. Production v0.15 roles are documented in MODELS_V015.md.
+
 # 第五个几何：收益分布 v2
 
 模型 ID `return-distribution-v2`，开发版本 v0.6，基于 v0.5。第一至第四、第六至第八个几何在有效数据上的表示和检索排名通过 v0.5 固定散列回归。
@@ -93,3 +95,4 @@ MAE 单位百分点，区间为 5,000 次种子簇 bootstrap 的探索性成对�
 ## 复现
 
 `npm test`、`npm run build`、`node scripts/distribution-reference-fixture.mjs`、`python scripts/check-distribution-reference.py`（NumPy/SciPy）、`npm run validate:distribution`。独立核对的大型输入由固定种子脚本重建；结果与生成脚本保留在仓库。
+
