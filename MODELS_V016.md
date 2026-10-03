@@ -25,6 +25,10 @@ Model review stops when the known numerical cases, adversarial boundaries, invar
 
 The regularization interpretation follows the assumptions described in the official scikit-learn covariance guide: https://scikit-learn.org/1.8/modules/covariance.html . Joint resampling preserves cross-asset observation indices, consistent with paired resampling described in the SciPy documentation: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bootstrap.html . The application uses its own circular-block diagnostic, not SciPy's bootstrap confidence intervals.
 
+## Export follow-up
+
+The generated JSON keeps a visible download link for retry. Blob URLs are revoked when results change or a new export is prepared. Export is disabled while calculations or provider loading run. Resetting to synthetic data or importing CSV clears earlier provider provenance.
+
 ## Release verification
 
 Full unit/property regression, production Worker dispatch, serialization across 10/19/20/29/30/50/60/119/120-session windows, future isolation, production build, secret scan and live bilingual/current/Homology/validation checks are required. Private v0.16 preserves v0.15 and earlier branches; Public retains main; production is verified against the Public commit and the embedded main entry.
