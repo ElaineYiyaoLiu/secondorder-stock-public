@@ -49,3 +49,11 @@ header .brand{align-items:center;gap:10px}header .brand .brand-wordmark{font:700
 .pill[data-status="descriptive"]{color:var(--blue,#21576b);background:#eef5f8}.pill[data-status="unstable"],.pill[data-status="sample"],.pill[data-status="information"]{background:#fff4e6;color:#815021}.pill[data-status="data"]{background:#faeeee;color:#853b3b}.method-note{font-size:.875rem;color:var(--muted,#687580);line-height:1.6;border-left:2px solid #86a6b6;padding-left:10px}
 
 header .brand .brand-logo{width:34px;height:34px;flex:none;display:block}@media(max-width:560px){header .brand .brand-logo{width:30px;height:30px}}
+
+/* Consistent SecondOrder identity across the cover and five workspaces. */
+header .brand.so-brand{display:inline-flex;align-items:center;gap:10px;color:#243e72;font:700 23px/1.1 Arial,'PingFang SC','Microsoft YaHei',sans-serif;letter-spacing:-.055em;white-space:nowrap;max-width:none}
+header .brand.so-brand .so-brand-mark{display:inline-flex;align-items:center;justify-content:center;flex:0 0 34px;width:34px;height:34px;margin:0;border-radius:4px;background:#243e72;color:#fff;font:400 27px/1 'Times New Roman',Times,serif;letter-spacing:-1px}
+header .brand.so-brand .so-brand-copy{font:inherit;letter-spacing:inherit;margin:0;color:inherit}
+header .brand.so-brand .so-brand-copy small{display:block;margin-top:5px;color:#657586;font:400 10px/1.1 Arial,'PingFang SC','Microsoft YaHei',sans-serif;letter-spacing:.12em}
+header .brand.so-brand .so-brand-copy small:empty{display:none}
+@media(max-width:560px){header .brand.so-brand{font-size:20px;gap:8px}header .brand.so-brand .so-brand-mark{flex-basis:30px;width:30px;height:30px;font-size:24px}}
