@@ -4,7 +4,7 @@ import {stocks,candleTranslation} from './market.js';
 import {interactiveDataset,parseCSV,instrument,validateDataset} from './data.js';
 import {GEOMETRIES,ANALYSIS_IDS,makeEngine,mean} from './engine.js';
 const $=id=>document.getElementById(id),escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let lang=navigator.language?.toLowerCase().startsWith('zh')?'zh':'en';try{const saved=localStorage.getItem('secondorder-site-language')||localStorage.getItem('stock-language');if(['zh','en'].includes(saved))lang=saved;}catch{}
+let lang='en';
 const requestedLanguage=new URLSearchParams(location.search).get('lang');if(['zh','en'].includes(requestedLanguage))lang=requestedLanguage;
 let symbol='NVDA',dataset=interactiveDataset('NVDA'),source='sample',view='explore',windowSize=63,offset=0,active=0,start=0,end=0,result=null,analysis=null,chosen=0,horizon=20,lab=null,worker=null,busy=false,busyIds=[],taskRunning=null,providerLoading=false,providerInfo=null,datasetRevision=0;
 const selected=new Set(GEOMETRIES.map(g=>g.id)),t=(en,zh)=>lang==='zh'?zh:en;
