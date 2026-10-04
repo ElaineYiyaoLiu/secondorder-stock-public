@@ -2,7 +2,7 @@
 
 Homology now occupies the same two-column grid cell as the seven other models, next to model 07. It uses the same heading, question, observation, metrics, plot, evidence badge and footer button. Detailed historical tables and outcomes expand inside its own card. It has no full-width grid rule or standalone section heading.
 
-The original SecondOrder wordmark is restored with Stock as a separate product label. The v0.1 stock header and the current main-site header both use text wordmarks; neither includes a separate logo image. The earlier merged SecondOrder Stock styling had removed that distinction.
+The SecondOrder text wordmark is shown with Stock as a separate product label. The v0.1 stock header and the current main-site header both use text wordmarks; neither includes a separate logo image. The earlier merged SecondOrder Stock styling had removed that distinction.
 
 ## Availability diagnosis and fixes
 
@@ -27,3 +27,5 @@ Production returned 8/8 results on the interactive dataset with no missing prima
 Real Marketstack history returned 745 aligned observations across eight assets. Six full runs covered NVDA and AAPL, each at 30/60/120-day selections. All current-analysis metrics were defined, and Homology references and outcomes were displayed. The remaining limited-evidence labels describe measured instability or sample limits. No application console error was observed; browser-extension metadata errors were unrelated to application code.
 
 Final visual check found that assigning the HTML-style hidden property did not remove the SVG preview’s hidden attribute. SVG visibility now explicitly toggles the hidden attribute for the preview and detailed overlay; this also prevents stale overlays from showing when no references exist.
+
+Brand correction after v0.19: the original navy/white II mark from secondorder-procedure-public/public/favicon.svg is restored as public/logo.svg in the Stock header and as its favicon. The earlier wordmark restoration had only restored text styling.
