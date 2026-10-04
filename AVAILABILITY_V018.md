@@ -19,3 +19,9 @@ Three rounds use endpoints 849, 789 and 729. Each covers all eight assets and 20
 Adversarial checks retain insufficiency for a one-asset dataset, omit an unsupported adjacent comparison, and verify specific missing-value reasons rather than fabricated numbers. Original numerical fixtures and existing model audits remain unchanged.
 
 211 tests passed. Build and whitespace checks passed. Live UI and real-history checks are repeated after publishing.
+
+## Live verification
+
+Production returned 8/8 results on the interactive dataset with no missing primary metrics. Browser geometry measured models 07 and 08 at the same y coordinate and the same width of 536 px; model 08 occupies the right-hand cell. Expanding historical details and selecting 60-day outcomes both worked. The header displayed the separate SecondOrder and Stock wordmarks.
+
+Real Marketstack history returned 745 aligned observations across eight assets. Six full runs covered NVDA and AAPL, each at 30/60/120-day selections. All current-analysis metrics were defined, and Homology references and outcomes were displayed. The remaining limited-evidence labels describe measured instability or sample limits. No application console error was observed; browser-extension metadata errors were unrelated to application code.
