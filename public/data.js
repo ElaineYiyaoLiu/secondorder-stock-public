@@ -1,6 +1,17 @@
 import {demoCandles,stocks} from './market.js';
 export const BASKET=['NVDA','AAPL','MSFT','AMZN','META','SPY','QQQ','TSLA'];
 export function sampleDataset(symbol='NVDA',count=500){return Object.fromEntries([...new Set([...BASKET,symbol])].map(s=>[s,demoCandles(s,count)]));}
+// Interactive illustration: a common market component plus asset-specific
+// variation. Historical numerical fixtures above remain unchanged.
+export function interactiveDataset(symbol='NVDA',count=850){
+ const data=sampleDataset(symbol,count);
+ for(const [s,rows] of Object.entries(data)){
+  const index=Math.max(0,stocks.findIndex(x=>x.symbol===s)),loading=.8+(index%5)*.1;
+  let common=0;
+  rows.forEach((r,i)=>{common+=.012*Math.sin(i*1.731)+.012*Math.cos(i*.619);const factor=Math.exp(loading*common);for(const k of ['open','high','low','close'])r[k]*=factor;});
+ }
+ return data;
+}
 export function validCandle(r){
  if(!r||typeof r.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(r.date))return false;
  const date=new Date(r.date+'T12:00:00Z');
@@ -26,4 +37,3 @@ export function parseCSV(text){
  return validateDataset(dataset);
 }
 export function instrument(symbol){return stocks.find(s=>s.symbol===symbol)||{symbol,name:symbol,zh:symbol};}
-

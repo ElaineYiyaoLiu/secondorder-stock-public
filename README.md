@@ -1,6 +1,6 @@
 This is SecondOrder Stock, a bilingual workspace for understanding a selected market period and comparing historical basket structure through Homology.
 
-Current version: **v0.17**.
+Current version: **v0.18**.
 
 Seven models describe current conditions: daily candles, price path, labelled asset relationships, equal-weight basket risk, return distribution, multiscale state and price-volume order. Homology is the eighth model and the only historical analogue search. Models have separate evidence checks. There is no agreement vote or combined directional score.
 
@@ -8,7 +8,7 @@ Seven models describe current conditions: daily candles, price path, labelled as
 
 ## Use
 
-1. Load Marketstack history or import a CSV. The default demo contains 850 aligned synthetic daily bars for eight assets, ending on 2025-06-30. Additional history precedes the original 500-bar audit fixture; no future dates are invented. Prices and volume are invented.
+1. Load Marketstack history or import a CSV. The default interactive demo contains 850 aligned synthetic daily bars for eight assets, ending on 2025-06-30. Additional history precedes the original 500-bar audit fixture; no future dates are invented. The interactive dataset adds an illustrative shared market component to asset-specific variation. Existing numerical fixtures remain unchanged. Prices and volume are invented.
 2. Keep the latest 30 sessions or select 10–120. Run all eight models with one button; individual cards can also run separately.
 3. Use model 08, Homology, in the same grid to compare the same asset basket with earlier structures. Select 5, 20 or 60 sessions of later outcomes; each has its own mature reference cohort.
 4. Validate Homology through its past-only walk-forward comparison. Short histories and unstable matching abstain from scoring.
@@ -19,7 +19,7 @@ The Marketstack v2 endpoint `/api/history?symbol=NVDA&basket=1&years=3` supports
 
 ## Models and evidence
 
-See [ONBOARDING_V017.md](ONBOARDING_V017.md), [MODELS_V016.md](MODELS_V016.md) and the original task definitions in [MODELS_V015.md](MODELS_V015.md) for definitions, diagnostic thresholds and limits. Model documentation from v0.2–v0.14 and `research/*` reports describe earlier retrieval designs. They are retained as historical research, not evidence for the new current-analysis tasks.
+See [AVAILABILITY_V018.md](AVAILABILITY_V018.md), [ONBOARDING_V017.md](ONBOARDING_V017.md), [MODELS_V016.md](MODELS_V016.md) and the original task definitions in [MODELS_V015.md](MODELS_V015.md) for definitions, diagnostic thresholds and limits. Model documentation from v0.2–v0.14 and `research/*` reports describe earlier retrieval designs. They are retained as historical research, not evidence for the new current-analysis tasks.
 
 Node 22 or later; no third-party runtime dependencies. Calculations run in a module Web Worker.
 
@@ -33,4 +33,4 @@ npm run build
 
 ## Release
 
-Development: `secondorder-stock-private / v0.17`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
+Development: `secondorder-stock-private / v0.18`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
