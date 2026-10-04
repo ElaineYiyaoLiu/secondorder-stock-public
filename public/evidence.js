@@ -25,7 +25,8 @@ export function presentEvidence(e,{id}={}){
  if(!e)return {code:'not-run',displayCode:'not-run',en:'Not run',zh:'尚未运行',detailEn:'',detailZh:'',actionEn:'',actionZh:'',methodEn:'',methodZh:''};
  const descriptive=e.code==='observed'||e.reason==='exploratory';
  const rule=rules[e.reason];const displayCode=descriptive?'descriptive':rule?.[0]||(e.code==='insufficient'?'data':'limited');
- const [en,zh]=labels[displayCode];
+ const scoped=e.reason==='boundary'?['Near state boundary','接近状态边界']:e.reason==='unstable'?({correlation:['Sensitive asset links','资产关联敏感'],riemannian:['Sensitive risk shares','风险份额敏感'],topology:['Sensitive historical matches','历史匹配敏感']}[id]):null;
+ const [en,zh]=scoped||labels[displayCode];
  return {code:e.code,reason:e.reason,displayCode,en,zh,detailEn:descriptive?'':e.en,detailZh:descriptive?'':e.zh,actionEn:descriptive?'':rule?.[1]||'',actionZh:descriptive?'':rule?.[2]||'',methodEn:id==='signature'?'Exploratory method: event order and signed areas do not establish causality.':e.reason==='exploratory-validation'?'Exploratory validation does not establish future forecasting accuracy.':'',methodZh:id==='signature'?'探索性方法：事件顺序和有向面积不证明因果关系。':e.reason==='exploratory-validation'?'探索性检验不证明未来预测准确性。':''};
 }
 export function geometryEvidence(g,analysis){return presentEvidence(analysis?.models?.find(m=>m.id===g.id)?.evidence,{id:g.id});}
