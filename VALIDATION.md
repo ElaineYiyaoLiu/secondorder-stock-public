@@ -125,3 +125,7 @@ Online verification on 2026-10-01:
 - The existing Production history endpoint returned eight aligned assets with 744 bars each, 2023-10-09 through 2026-10-07. All seven current models produced finite metrics; Homology returned 8 / 8 / 7 references at the 5 / 20 / 60-session horizons. Several models explicitly report limited/unstable evidence. The response used unadjusted OHLCV, so split-related distortions remain a visible limitation.
 - Success-only six-hour Vercel CDN caching is covered by provider tests. Browser responses retain no-store. This is a regional response cache, not a daily persistent database or a strict provider-budget cap.
 - Build and whitespace checks pass. Native browser visual/interaction QA remains unavailable because the browser policy check could not be verified; startup/translation interactions were exercised in the DOM test harness instead.
+
+## v0.21 sidebar cleanup
+
+Removed the always-visible real-data load button. Secondary controls live in a collapsed Data options section; history/basket changes reload automatically. Retry appears after a provider error, and return-to-market appears for CSV/demo data. Startup, error preservation, language, export and provider tests: 24 / 24 pass. Build and HTML element-reference checks pass. Model calculations and history adapter are unchanged.

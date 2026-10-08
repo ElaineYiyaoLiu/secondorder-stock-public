@@ -65,3 +65,5 @@ header .brand.so-brand .so-brand-copy small:empty{display:none}
 .advanced-checks{margin-top:28px;padding:18px;background:white;border:1px solid var(--line);border-radius:5px}.advanced-checks>summary{cursor:pointer;color:var(--navy);font-size:16px}.advanced-checks[open]>summary{margin-bottom:18px}.plain-reading{font-size:14px;line-height:1.75;color:var(--muted);margin:8px 0 16px}.plain-reading:empty{display:none}.header-right{flex-shrink:0}
 
 .data-requirements{font-size:13px;margin:12px 0}.data-requirements>summary{cursor:pointer;color:var(--blue)}.data-requirements p{line-height:1.7}
+
+.data-options{width:100%;font-size:13px}.data-options>summary{cursor:pointer;color:var(--muted);padding:6px 0}.data-options-content{display:grid;gap:8px;margin-top:12px;min-width:0}.data-options-content>button{width:100%}.data-options-content input{width:auto}.data-options-content .history-range{display:grid}@media(max-width:800px){.watch-bottom .data-options-content p{display:block;margin:5px 0}.data-options-content .basket-option{flex-basis:auto}.data-options{max-width:360px}}

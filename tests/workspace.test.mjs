@@ -28,7 +28,7 @@ test('startup requests the real three-year basket and hides all synthetic values
 });
 test('provider failure leaves the workspace empty and calculations disabled without demo fallback',async()=>{
  const w=workspace();w.resolve({ok:false,json:async()=>({code:'provider-quota',error:'quota'})});await settle();
- assert.equal(w.get('data-workspace').hidden,true);assert.equal(w.get('find').disabled,true);assert.equal(w.get('provider').disabled,false);assert.match(w.get('message').textContent,/quota/);assert.equal(w.get('price').textContent,'');
+ assert.equal(w.get('data-workspace').hidden,true);assert.equal(w.get('find').disabled,true);assert.equal(w.get('retry-data').disabled,false);assert.equal(w.get('retry-data').hidden,false);assert.match(w.get('message').textContent,/quota/);assert.equal(w.get('price').textContent,'');
 });
 test('an explicitly chosen demo cannot be overwritten by an in-flight real-data response or error',async()=>{
  for(const ok of [true,false]){
@@ -40,7 +40,7 @@ test('an explicitly chosen demo cannot be overwritten by an in-flight real-data 
 test('both languages render eight cards and the optional checks stay after the results',async()=>{
  const w=workspace();w.resolve({ok:true,json:async()=>({source:'marketstack',dataset:interactiveDataset(),adjustment:'all'})});await settle();
  vm.runInContext("lang='zh'; render()",w.context);assert.match(w.get('data-summary').textContent,/已复权/);assert.equal((w.get('analysis-cards').innerHTML.match(/data-run-model=/g)||[]).length,7);
- const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');assert.doesNotMatch(html,/data-view=/);assert.ok(html.indexOf('id="advanced-checks"')>html.indexOf('id="homology-card"'));assert.match(html,/<details id="advanced-checks"/);
+ const html=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');assert.doesNotMatch(html,/data-view=/);assert.doesNotMatch(html,/id="provider"/);assert.match(html,/<details class="data-options"/);assert.ok(html.indexOf('id="advanced-checks"')>html.indexOf('id="homology-card"'));assert.match(html,/<details id="advanced-checks"/);
 });
 test('brief explanations preserve unavailable results and distinguish intraday bodies from daily change',()=>{
  const data=interactiveDataset(),models=makeEngine(data,'NVDA').analyze(820,849).models;
