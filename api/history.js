@@ -68,8 +68,9 @@ export default async function handler(req,res){
   let data=cache.get(cacheKey);if(!data||data.until<Date.now()){
    let request=pending.get(cacheKey);
    if(!request){request=load(symbols,key,years);pending.set(cacheKey,request);}
-   try{const result=await request;data={until:Date.now()+900000,result};cache.set(cacheKey,data);}finally{if(pending.get(cacheKey)===request)pending.delete(cacheKey);}
+   try{const result=await request;data={until:Date.now()+21600000,result};cache.set(cacheKey,data);}finally{if(pending.get(cacheKey)===request)pending.delete(cacheKey);}
   }
+  res.setHeader('Vercel-CDN-Cache-Control','public, s-maxage=21600');
   return res.json({...data.result,symbol,rows:data.result.dataset[symbol]});
  }catch(e){return res.status(e.status||502).json({code:errors[e.code]?e.code:'provider-unavailable',error:errors[e.code]||errors['provider-unavailable'],...(e.detail?{detail:e.detail}:{})});}
 }

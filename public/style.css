@@ -60,3 +60,8 @@ header .brand.so-brand .so-brand-copy small:empty{display:none}
 
 /* Continuous history browsing, separate from analysis selection. */
 .chart-navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 18px 0}.chart-mode,.chart-zoom{display:flex;gap:6px;flex-wrap:wrap}.chart-help{margin:10px 18px 0;color:var(--muted);font-size:14px}.chart-history{padding:0 18px 12px}.chart-history svg{display:block;width:100%;height:54px;background:#f6f8fa;border-radius:4px}.chart-history input{display:block;width:100%;margin:8px 0;accent-color:var(--navy);min-height:24px}.chart-history output{display:block;font-size:13px;color:var(--muted)}#candles{touch-action:none;cursor:grab;user-select:none}#candles:active{cursor:grabbing}#candles[data-mode=select]{cursor:crosshair}@media(max-width:560px){.chart-navigation{padding:10px 12px 0}.chart-help{margin:10px 12px 0}.chart-history{padding:0 12px 10px}.chart-zoom button{padding:5px 9px}}
+
+/* One workspace, with optional validation after the results. */
+.advanced-checks{margin-top:28px;padding:18px;background:white;border:1px solid var(--line);border-radius:5px}.advanced-checks>summary{cursor:pointer;color:var(--navy);font-size:16px}.advanced-checks[open]>summary{margin-bottom:18px}.plain-reading{font-size:14px;line-height:1.75;color:var(--muted);margin:8px 0 16px}.plain-reading:empty{display:none}.header-right{flex-shrink:0}
+
+.data-requirements{font-size:13px;margin:12px 0}.data-requirements>summary{cursor:pointer;color:var(--blue)}.data-requirements p{line-height:1.7}

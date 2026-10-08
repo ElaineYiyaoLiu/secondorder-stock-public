@@ -116,3 +116,12 @@ Online verification on 2026-10-01:
 - Existing SecondOrder sites were not modified. No public repository was created.
 
 
+
+## v0.20 single workspace and real-data startup
+
+- Removed Analysis / Advanced checks navigation. Optional validation appears after the eight cards, collapsed by default. Both languages receive brief model explanations and a candle comparison with the previous close and preceding volume average.
+- The actual startup handler requests the eight-asset real three-year basket. Tests verify that prices and calculations remain hidden/disabled before success, provider errors never reveal a demo, and an explicit demo choice survives an in-flight response or error.
+- Targeted current-model, chart, onboarding, export and provider checks pass. Full suite: 220 / 225 pass on Node 24.19.0; five unchanged legacy SHA snapshot tests fail identically on the clean v0.19 Public baseline. No snapshot or model formula was changed to mask this.
+- The existing Production history endpoint returned eight aligned assets with 744 bars each, 2023-10-09 through 2026-10-07. All seven current models produced finite metrics; Homology returned 8 / 8 / 7 references at the 5 / 20 / 60-session horizons. Several models explicitly report limited/unstable evidence. The response used unadjusted OHLCV, so split-related distortions remain a visible limitation.
+- Success-only six-hour Vercel CDN caching is covered by provider tests. Browser responses retain no-store. This is a regional response cache, not a daily persistent database or a strict provider-budget cap.
+- Build and whitespace checks pass. Native browser visual/interaction QA remains unavailable because the browser policy check could not be verified; startup/translation interactions were exercised in the DOM test harness instead.
