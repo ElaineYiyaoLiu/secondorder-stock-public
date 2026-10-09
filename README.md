@@ -45,3 +45,8 @@ Data options (history range, comparison assets, CSV and demo) are collapsed in t
 
 
 Each model leads with its observation and plain-language explanation in the selected language. Per-model reading guides and the shared How to read section appear below the results and start collapsed.
+
+
+## Shared history for Homology
+
+Accepted Marketstack datasets are saved in browser IndexedDB and broadcast on the Stock origin. `shared-history.html` forwards the already loaded history to the Homology production origin using an exact origin and per-connection token. It makes no provider request. Use https://stock.secondorder.tools together with https://homology.secondorder.tools; keep the optional top-level connection window open when browser storage isolation prevents iframe sharing. Synthetic and CSV data never publish as Marketstack history.
