@@ -1,6 +1,6 @@
 This is SecondOrder Stock, a bilingual workspace for understanding a selected market period and comparing historical basket structure through Homology.
 
-Current version: **v0.22**.
+Current version: **v0.23**.
 
 Seven models describe current conditions: daily candles, price path, labelled asset relationships, equal-weight basket risk, return distribution, multiscale state and price-volume order. Homology is the eighth model and the only historical analogue search. Models have separate evidence checks. There is no agreement vote or combined directional score.
 
@@ -33,7 +33,7 @@ npm run build
 
 ## Release
 
-Development: `secondorder-stock-private / v0.22`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
+Development: `secondorder-stock-private / v0.23`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
 
 ## Data requirements
 
