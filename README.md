@@ -1,6 +1,6 @@
 This is SecondOrder Stock, a bilingual workspace for understanding a selected market period and comparing historical basket structure through Homology.
 
-Current version: **v0.21**.
+Current version: **v0.22**.
 
 Seven models describe current conditions: daily candles, price path, labelled asset relationships, equal-weight basket risk, return distribution, multiscale state and price-volume order. Homology is the eighth model and the only historical analogue search. Models have separate evidence checks. There is no agreement vote or combined directional score.
 
@@ -33,7 +33,7 @@ npm run build
 
 ## Release
 
-Development: `secondorder-stock-private / v0.21`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
+Development: `secondorder-stock-private / v0.22`; previous numbered branches are retained. Production: `secondorder-stock-public / main`, deployed on Vercel and embedded at https://secondorder.tools/stock. The stock product owns its version independently.
 
 ## Data requirements
 
@@ -42,3 +42,6 @@ All models use completed daily date, open, high, low, close and volume values. U
 For the latest 30-session selection, the coverage prerequisite is at least 300 aligned bars through the selection end for three separated references at every horizon (5, 20 and 60 sessions). A 120-session selection needs 660. These are coverage thresholds, not guarantees of distinguishable or stable matches. Three years, about 750 bars per asset or 6,000 asset-day records for eight assets, is the default. Basic's advertised 10-year daily history and 10,000 monthly ticker requests cover this scale; actual account entitlement and remaining quota must be checked in Marketstack. Each symbol in every paginated request consumes quota.
 
 Data options (history range, comparison assets, CSV and demo) are collapsed in the sidebar. Range and basket changes automatically reload real history. A retry button appears only after a loading error; a return-to-market button appears only while CSV or demo data is active.
+
+
+Each model leads with its observation and plain-language explanation in the selected language. Per-model reading guides and the shared How to read section appear below the results and start collapsed.
