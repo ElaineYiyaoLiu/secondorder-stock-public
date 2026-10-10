@@ -12,10 +12,10 @@ import {plainReading,homologyReading,candleContext} from '../public/plain-readin
 const source=readFileSync(new URL('../public/app.js',import.meta.url),'utf8').replace(/^import .*;\n/gm,'');
 function workspace(){
  const elements=new Map();
- const get=id=>{if(!elements.has(id))elements.set(id,{id,hidden:id==='data-workspace',dataset:{},value:id==='history-years'?'3':'',checked:id==='provider-basket',disabled:false,textContent:'',innerHTML:'',querySelectorAll:()=>[],setAttribute(k,v){this[k]=v;},removeAttribute(k){delete this[k];},toggleAttribute(k,v){this[k]=v;},addEventListener(){},click(){this.onclick?.();}});return elements.get(id);};
+ const get=id=>{if(id==='prepared-pdf')return null;if(!elements.has(id))elements.set(id,{id,hidden:id==='data-workspace',dataset:{},value:id==='history-years'?'3':'',checked:id==='provider-basket',disabled:false,textContent:'',innerHTML:'',querySelectorAll:()=>[],setAttribute(k,v){this[k]=v;},removeAttribute(k){delete this[k];},toggleAttribute(k,v){this[k]=v;},addEventListener(){},click(){this.onclick?.();}});return elements.get(id);};
  let resolve,reject,request;
  const pending=new Promise((a,b)=>{resolve=a;reject=b;});
- const context=vm.createContext({document:{getElementById:get,querySelectorAll:()=>[],documentElement:{}},location:{search:'',href:'https://example.test/'},URL,URLSearchParams,stocks,candleTranslation,interactiveDataset,validateDataset,instrument,makeEngine,GEOMETRIES,ANALYSIS_IDS,mean,dataCoverage,viewport,panViewport,zoomViewport,geometryEvidence,presentEvidence,plainReading,homologyReading,candleContext,fetch:url=>{request=url;return pending;}});
+ const context=vm.createContext({publishSharedHistory:async()=>{},document:{getElementById:get,querySelectorAll:()=>[],documentElement:{}},location:{search:'',href:'https://example.test/'},URL,URLSearchParams,stocks,candleTranslation,interactiveDataset,validateDataset,instrument,makeEngine,GEOMETRIES,ANALYSIS_IDS,mean,dataCoverage,viewport,panViewport,zoomViewport,geometryEvidence,presentEvidence,plainReading,homologyReading,candleContext,fetch:url=>{request=url;return pending;}});
  vm.runInContext(source,context);
  return {get,context,resolve,reject,get request(){return request;}};
 }
